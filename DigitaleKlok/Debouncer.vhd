@@ -48,7 +48,9 @@ begin
 	process(debclk)
 	begin
 		if rising_edge(sysclk) then
-		
+			if debclk'event and debclk = '1' then
+				delay1 <= '1';
+			end if;
 		end if;
 	end process;
 
