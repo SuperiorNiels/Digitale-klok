@@ -1,10 +1,10 @@
 ----------------------------------------------------------------------------------
 -- Company: 
--- Engineer: 
+-- Engineer: Dieter en Niels
 -- 
--- Create Date:    17:01:43 02/23/2016 
+-- Create Date:    16:51:49 02/23/2016 
 -- Design Name: 
--- Module Name:    D2 - Behavioral 
+-- Module Name:    deler - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,28 +29,27 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity D2 is
-	generic (divD1,divD2 : integer := 10);
+entity deler is
+	Generic (div : integer := 10);
     Port ( sysclk : in  STD_LOGIC;
            en : in  STD_LOGIC;
-           pulse1 : out  STD_LOGIC;
-           pulse2 : out  STD_LOGIC);
-end D2;
+           pulse : out  STD_LOGIC);
+end deler;
 
-architecture struct of D2 is
-		COMPONENT deler
-		generic (div : integer := 10);
-		port (sysclk,en : IN std_logic;
-				pulse : OUT std_logic);
-		END COMPONENT;
-	signal PulseD1enD2 : std_logic := '0';
-	--parameterwaarden
-
+architecture Behavioral of deler is
+	signal cnt_int : integer range 0 to div;
+	constant max : integer := div - 1;
 begin
-		D1: deler GENERIC MAP (div =>divD1)
-					 PORT MAP (sysclk =>sysclk,en=>en,pulse=>PulseD1enD2);
-		D2: deler GENERIC MAP (div =>divD2)
-					 PORT MAP (sysclk =>sysclk, en=>PulseD1enD2,pulse=>pulse2);
-		pulse1 <= pulseD1enD2;
-end struct;
+	deler : process (sysclk)
+		begin
+			if rising_edge(sysclk) then
+			if en = '1' then
+				if cnt_int = max then cnt_int <= 0;
+				else cnt_int <= cnt_int + 1;
+				end if;
+			end if;
+		end if;
+	end process;
+	pulse <= '1' when ((cnt_int = max) and (en = '1')) else '0';
+end Behavioral;
 
