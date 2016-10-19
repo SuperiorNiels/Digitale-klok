@@ -29,6 +29,7 @@
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
   </files>
 
@@ -44,6 +45,10 @@
     <transform xil_pn:end_ts="1476871855" xil_pn:in_ck="-7566997843787752575" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1476871855">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="T6.vhd"/>
       <outfile xil_pn:name="T6_tb.vhd"/>
       <outfile xil_pn:name="teller.vhd"/>
@@ -63,6 +68,11 @@
     <transform xil_pn:end_ts="1476871855" xil_pn:in_ck="-7566997843787752575" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1476871855">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="T6.vhd"/>
       <outfile xil_pn:name="T6_tb.vhd"/>
       <outfile xil_pn:name="teller.vhd"/>
@@ -70,7 +80,11 @@
     <transform xil_pn:end_ts="1476871862" xil_pn:in_ck="-7566997843787752575" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="7645221329090152746" xil_pn:start_ts="1476871855">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="T6_tb_beh.prj"/>
       <outfile xil_pn:name="T6_tb_isim_beh.exe"/>
@@ -78,11 +92,16 @@
       <outfile xil_pn:name="isim"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1476871863" xil_pn:in_ck="4120081004066623662" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8900265766514915255" xil_pn:start_ts="1476871862">
+    <transform xil_pn:end_ts="1476871969" xil_pn:in_ck="4120081004066623662" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8900265766514915255" xil_pn:start_ts="1476871969">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="T6_tb_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
+      <outfile xil_pn:name="isim.log"/>
     </transform>
   </transforms>
 
