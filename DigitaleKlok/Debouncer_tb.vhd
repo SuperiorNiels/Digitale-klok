@@ -95,7 +95,7 @@ BEGIN
 		inp <= '0';
 		wait for 12 ns;
 		inp <= '1';
-		wait for 15 ns;
+		wait for 31 ns;
 		inp <= '0';
       wait for debclk_period*10;
 

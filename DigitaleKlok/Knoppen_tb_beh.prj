@@ -1,0 +1,3 @@
+vhdl work "Debouncer.vhd"
+vhdl work "Knoppen.vhd"
+vhdl work "Knoppen_tb.vhd"

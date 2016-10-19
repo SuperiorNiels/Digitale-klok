@@ -46,14 +46,24 @@ architecture Behavioral of Knoppen is
 Component Debouncer is
     Port ( inp : in  STD_LOGIC;
            debclk : in  STD_LOGIC;
-			  sysclk : in  STD_LOGIC;
            outp : out  STD_LOGIC);
 end Component;
+signal temp_out1, temp_out2, temp_out3, temp_out4 : STD_LOGIC := '0';
 begin
-	Deb1 : Debouncer Port map (inp=>btn1,debclk=>debclk,sysclk=>sysclk,outp=>out1);
-	Deb2 : Debouncer Port map (inp=>btn2,debclk=>debclk,sysclk=>sysclk,outp=>out2);
-	Deb3 : Debouncer Port map (inp=>btn3,debclk=>debclk,sysclk=>sysclk,outp=>out3);
-	Deb4 : Debouncer Port map (inp=>btn4,debclk=>debclk,sysclk=>sysclk,outp=>out4);
-
+	Deb1 : Debouncer Port map (inp=>btn1,debclk=>debclk,outp=>temp_out1);
+	Deb2 : Debouncer Port map (inp=>btn2,debclk=>debclk,outp=>temp_out2);
+	Deb3 : Debouncer Port map (inp=>btn3,debclk=>debclk,outp=>temp_out3);
+	Deb4 : Debouncer Port map (inp=>btn4,debclk=>debclk,outp=>temp_out4);
+	
+	Knoppen : process(sysclk)
+	begin
+		if rising_edge(sysclk) then
+			if temp_out1 = '1' then out1 <= '1'; else out1 <= '0'; end if;
+			if temp_out2 = '1' then out2 <= '1'; else out2 <= '0'; end if;
+			if temp_out3 = '1' then out3 <= '1'; else out3 <= '0'; end if;
+			if temp_out4 = '1' then out4 <= '1'; else out4 <= '0'; end if;
+		else null;
+		end if;
+	end process;
 end Behavioral;
 
