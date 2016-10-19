@@ -1,0 +1,3 @@
+vhdl isim_temp "deler.vhd"
+vhdl isim_temp "Timing.vhd"
+vhdl isim_temp "Timing_TB.vhd"

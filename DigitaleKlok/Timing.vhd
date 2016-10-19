@@ -31,16 +31,47 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Timing is
     Port ( sysclk : in  STD_LOGIC;
-           pulse4 : in  STD_LOGIC;
-           pulse3 : in  STD_LOGIC;
-           pulse2 : in  STD_LOGIC;
-           pulse1 : in  STD_LOGIC);
+           pulse1 : out STD_LOGIC;
+           pulse2 : out STD_LOGIC;
+           pulse3 : out STD_LOGIC;
+           pulse4 : out STD_LOGIC);
 end Timing;
 
 architecture Behavioral of Timing is
 
+--Componenten
+	Component deler
+	generic (div : integer := 10);
+	port(
+		sysclk,en		: in STD_LOGIC;
+		pulse 			: out STD_LOGIC);
+	end component;
+	
+--Signals
+	constant divD1 : integer:= 10;
+	constant divD2 : integer:= 10;
+	constant divD3 : integer:= 10;
+	constant divD4 : integer:= 10;
+	
 begin
-
+	D1: deler GENERIC MAP(div => divD1)
+		Port map(sysclk=>sysclk,
+					en=>'1',
+					pulse=>pulse1);
+	D2: deler GENERIC MAP(div => divD2)
+		Port map(sysclk=>sysclk,
+					en=>'1',
+					pulse=>pulse2);
+	
+	D3: deler GENERIC MAP(div => divD3)
+		Port map(sysclk=>sysclk,
+					en=>'1',
+					pulse=>pulse3);
+	
+	D4: deler GENERIC MAP(div => divD4)
+		Port map(sysclk=>sysclk,
+					en=>'1',
+					pulse=>pulse4);
 
 end Behavioral;
 
