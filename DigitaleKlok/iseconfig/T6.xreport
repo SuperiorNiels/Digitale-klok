@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-10-19T14:21:33</DateModified>
+  <DateModified>2016-10-19T14:27:17</DateModified>
   <ModuleName>T6</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/GitHub/Digitale-klok/DigitaleKlok/iseconfig/T6.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/GitHub/Digitale-klok/DigitaleKlok\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/iseconfig/T6.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok\</ImplementationReportsDirectory>
   <DateInitialized>2016-10-19T12:10:11</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
