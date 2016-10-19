@@ -1,22 +1,24 @@
-Running: C:\Xilinx\14.4\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/GitHub/Digitale-klok/DigitaleKlok/T6_tb_isim_beh.exe -prj C:/GitHub/Digitale-klok/DigitaleKlok/T6_tb_beh.prj work.T6_tb 
+Running: C:\Xilinx\14.4\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/Timing_TB_isim_beh.exe -prj C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/Timing_TB_beh.prj work.Timing_TB 
 ISim P.49d (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Parsing VHDL file "C:/GitHub/Digitale-klok/DigitaleKlok/teller.vhd" into library work
-Parsing VHDL file "C:/GitHub/Digitale-klok/DigitaleKlok/T6.vhd" into library work
-Parsing VHDL file "C:/GitHub/Digitale-klok/DigitaleKlok/T6_tb.vhd" into library work
+Parsing VHDL file "C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/deler.vhd" into library work
+Parsing VHDL file "C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/Timing.vhd" into library work
+Parsing VHDL file "C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/Timing_TB.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
-Compiling package numeric_std
-Compiling architecture behavioral of entity teller [\teller(10)\]
-Compiling architecture behavioral of entity T6 [\T6(10,10,10,10,10,10)\]
-Compiling architecture behavior of entity t6_tb
+Compiling architecture behavioral of entity deler [\deler(1)\]
+Compiling architecture behavioral of entity deler [\deler(10)\]
+Compiling architecture behavioral of entity deler [\deler(100)\]
+Compiling architecture behavioral of entity deler [\deler(1000)\]
+Compiling architecture behavioral of entity Timing [timing_default]
+Compiling architecture behavior of entity timing_tb
 Time Resolution for simulation is 1ps.
-WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: Het systeem kan het opgegeven pad niet vinden, "isim\T6_tb_isim_beh.exe.sim\libPortability.dll".
-Compiled 8 VHDL Units
-Built simulation executable C:/GitHub/Digitale-klok/DigitaleKlok/T6_tb_isim_beh.exe
-Fuse Memory Usage: 35316 KB
-Fuse CPU Usage: 562 ms
+WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: Het systeem kan het opgegeven pad niet vinden, "isim\Timing_TB_isim_beh.exe.sim\libPortability.dll".
+Compiled 13 VHDL Units
+Built simulation executable C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/Timing_TB_isim_beh.exe
+Fuse Memory Usage: 29572 KB
+Fuse CPU Usage: 342 ms
