@@ -10,13 +10,15 @@ Starting static elaboration
 Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
+Compiling architecture behavioral of entity deler [\deler(1)\]
 Compiling architecture behavioral of entity deler [\deler(10)\]
+Compiling architecture behavioral of entity deler [\deler(100)\]
+Compiling architecture behavioral of entity deler [\deler(1000)\]
 Compiling architecture behavioral of entity Timing [timing_default]
 Compiling architecture behavior of entity timing_tb
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
 WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: Het systeem kan het opgegeven pad niet vinden, "isim\Timing_TB_isim_beh.exe.sim\libPortability.dll".
-Compiled 7 VHDL Units
+Compiled 13 VHDL Units
 Built simulation executable C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/Timing_TB_isim_beh.exe
-Fuse Memory Usage: 29476 KB
-Fuse CPU Usage: 374 ms
+Fuse Memory Usage: 29572 KB
+Fuse CPU Usage: 342 ms
