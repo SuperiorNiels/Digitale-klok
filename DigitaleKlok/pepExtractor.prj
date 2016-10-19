@@ -1,2 +1,1 @@
-work	"Timing.vhd"
-work	"deler.vhd"
+work	"Debouncer.vhd"

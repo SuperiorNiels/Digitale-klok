@@ -43,9 +43,17 @@ entity Knoppen is
 end Knoppen;
 
 architecture Behavioral of Knoppen is
-
+Component Debouncer is
+    Port ( inp : in  STD_LOGIC;
+           debclk : in  STD_LOGIC;
+			  sysclk : in  STD_LOGIC;
+           outp : out  STD_LOGIC);
+end Component;
 begin
-
+	Deb1 : Debouncer Port map (inp=>btn1,debclk=>debclk,sysclk=>sysclk,outp=>out1);
+	Deb2 : Debouncer Port map (inp=>btn2,debclk=>debclk,sysclk=>sysclk,outp=>out2);
+	Deb3 : Debouncer Port map (inp=>btn3,debclk=>debclk,sysclk=>sysclk,outp=>out3);
+	Deb4 : Debouncer Port map (inp=>btn4,debclk=>debclk,sysclk=>sysclk,outp=>out4);
 
 end Behavioral;
 

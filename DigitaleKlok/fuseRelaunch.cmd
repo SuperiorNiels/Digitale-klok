@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/Timing_TB_isim_beh.exe" -prj "C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/Timing_TB_beh.prj" "work.Timing_TB" 
+-intstyle "ise" -incremental -lib "secureip" -o "C:/GitHub/Digitale-klok/DigitaleKlok/Debouncer_tb_isim_beh.exe" -prj "C:/GitHub/Digitale-klok/DigitaleKlok/Debouncer_tb_beh.prj" "Debouncer_tb" 
