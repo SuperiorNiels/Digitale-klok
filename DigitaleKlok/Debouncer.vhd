@@ -43,9 +43,14 @@ entity Debouncer is
 end Debouncer;
 
 architecture Behavioral of Debouncer is
-
+signal delay1, delay2, delay3: STD_LOGIC_VECTOR(3 downto 0);
 begin
-
+	process(debclk)
+	begin
+		if rising_edge(sysclk) then
+		
+		end if;
+	end process;
 
 end Behavioral;
 
