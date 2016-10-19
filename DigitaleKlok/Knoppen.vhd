@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    14:51:39 10/19/2016 
+-- Create Date:    14:59:26 10/19/2016 
 -- Design Name: 
--- Module Name:    Debouncer - Behavioral 
+-- Module Name:    Knoppen - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,23 +29,23 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Debouncer is
-    Port ( inp : in  STD_LOGIC;
+entity Knoppen is
+    Port ( btn1 : in  STD_LOGIC;
+           btn2 : in  STD_LOGIC;
+           btn3 : in  STD_LOGIC;
+           btn4 : in  STD_LOGIC;
+           sysclk : in  STD_LOGIC;
            debclk : in  STD_LOGIC;
-           outp : out  STD_LOGIC);
-end Debouncer;
+           out1 : out  STD_LOGIC;
+           out2 : out  STD_LOGIC;
+           out3 : out  STD_LOGIC;
+           out4 : out  STD_LOGIC);
+end Knoppen;
 
-architecture Behavioral of Debouncer is
-signal temp1, temp2, temp3 : STD_LOGIC;
+architecture Behavioral of Knoppen is
+
 begin
-	process(debclk)
-	begin
-		if rising_edge(debclk) then
-			temp1 <= inp;
-			temp2 <= temp1;
-			temp3 <= temp2;
-		end if;
-	end process;
-	outp <= temp1 and temp2 and temp3;
+
+
 end Behavioral;
 
