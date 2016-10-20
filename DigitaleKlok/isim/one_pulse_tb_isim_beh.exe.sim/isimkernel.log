@@ -2,14 +2,14 @@ Command line:
    one_pulse_tb_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  57983
+     -socket  58088
 
-Thu Oct 20 09:47:40 2016
+Thu Oct 20 09:56:19 2016
 
 
  Elaboration Time: 0.015625 sec
 
- Current Memory Usage: 836.628 Meg
+ Current Memory Usage: 836.71 Meg
 
  Total Signals          : 8
  Total Nets             : 5
@@ -19,10 +19,11 @@ Thu Oct 20 09:47:40 2016
  Total Processes        : 5
  Total Traceable Variables  : 9
  Total Scalar Nets and Variables : 366
+Total Line Count : 16
 
- Total Simulation Time: 0.015625 sec
+ Total Simulation Time: 0.046875 sec
 
- Current Memory Usage: 836.628 Meg
+ Current Memory Usage: 836.71 Meg
 
-Thu Oct 20 09:47:41 2016
+Thu Oct 20 09:56:29 2016
 
