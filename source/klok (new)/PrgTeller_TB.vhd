@@ -40,6 +40,8 @@ ARCHITECTURE behavior OF PrgTeller_TB IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT PrgTeller
+	 Generic (min : std_logic_vector(3 downto 0) := "0001";
+				 max : std_logic_vector(3 downto 0) := "1001";
     PORT(
          sysclk : IN  std_logic;
          cnten : IN  std_logic;
@@ -58,8 +60,6 @@ ARCHITECTURE behavior OF PrgTeller_TB IS
    signal cnten : std_logic := '0';
    signal reset : std_logic := '1';
 	signal updwn : std_logic := '1';
-   signal min : std_logic_vector(3 downto 0) := "0001";
-   signal max : std_logic_vector(3 downto 0) := "1001";
 
  	--Outputs
    signal count : std_logic_vector(3 downto 0);
