@@ -23,6 +23,9 @@
 <msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/GitHub/Digitale-klok/DigitaleKlok/deler.vhd&quot; into library work</arg>
 </msg>
 
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/GitHub/Digitale-klok/DigitaleKlok/one_pulse.vhd&quot; into library work</arg>
+</msg>
+
 <msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/GitHub/Digitale-klok/DigitaleKlok/teller.vhd&quot; into library work</arg>
 </msg>
 

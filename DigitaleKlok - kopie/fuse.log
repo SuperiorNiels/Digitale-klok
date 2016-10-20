@@ -1,0 +1,24 @@
+Running: C:\Xilinx\14.4\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/GitHub/Digitale-klok/DigitaleKlok/Knoppen_tb_isim_beh.exe -prj C:/GitHub/Digitale-klok/DigitaleKlok/Knoppen_tb_beh.prj work.Knoppen_tb 
+ISim P.49d (signature 0x7708f090)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Parsing VHDL file "C:/GitHub/Digitale-klok/DigitaleKlok/one_pulse.vhd" into library work
+Parsing VHDL file "C:/GitHub/Digitale-klok/DigitaleKlok/Debouncer.vhd" into library work
+Parsing VHDL file "C:/GitHub/Digitale-klok/DigitaleKlok/Knoppen.vhd" into library work
+Parsing VHDL file "C:/GitHub/Digitale-klok/DigitaleKlok/Knoppen_tb.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling package standard
+Compiling package std_logic_1164
+Compiling architecture behavioral of entity Debouncer [debouncer_default]
+Compiling architecture behavioral of entity one_pulse [one_pulse_default]
+Compiling architecture behavioral of entity Knoppen [knoppen_default]
+Compiling architecture behavior of entity knoppen_tb
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: Het systeem kan het opgegeven pad niet vinden, "isim\Knoppen_tb_isim_beh.exe.sim\libPortability.dll".
+Compiled 9 VHDL Units
+Built simulation executable C:/GitHub/Digitale-klok/DigitaleKlok/Knoppen_tb_isim_beh.exe
+Fuse Memory Usage: 29816 KB
+Fuse CPU Usage: 452 ms

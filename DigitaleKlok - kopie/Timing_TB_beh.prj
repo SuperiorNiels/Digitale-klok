@@ -1,0 +1,3 @@
+vhdl work "deler.vhd"
+vhdl work "Timing.vhd"
+vhdl work "Timing_TB.vhd"
