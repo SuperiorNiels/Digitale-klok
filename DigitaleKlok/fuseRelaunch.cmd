@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/GitHub/Digitale-klok/DigitaleKlok/Knoppen_tb_isim_beh.exe" -prj "C:/GitHub/Digitale-klok/DigitaleKlok/Knoppen_tb_beh.prj" "Knoppen_tb" 
+-intstyle "ise" -incremental -lib "secureip" -o "C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/T6_tb_isim_beh.exe" -prj "C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/T6_tb_beh.prj" "T6_tb" 
