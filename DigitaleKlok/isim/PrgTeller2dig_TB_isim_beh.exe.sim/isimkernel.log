@@ -1,0 +1,29 @@
+Command line:
+   PrgTeller2dig_TB_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  61307
+
+Thu Oct 20 09:48:33 2016
+
+
+ Elaboration Time: 0.015625 sec
+
+ Current Memory Usage: 836.768 Meg
+
+ Total Signals          : 22
+ Total Nets             : 35
+ Total Signal Drivers   : 15
+ Total Blocks           : 4
+ Total Primitive Blocks : 3
+ Total Processes        : 10
+ Total Traceable Variables  : 14
+ Total Scalar Nets and Variables : 519
+Total Line Count : 30
+
+ Total Simulation Time: 0.046875 sec
+
+ Current Memory Usage: 836.768 Meg
+
+Thu Oct 20 09:48:37 2016
+

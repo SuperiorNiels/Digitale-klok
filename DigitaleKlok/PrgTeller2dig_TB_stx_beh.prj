@@ -1,0 +1,2 @@
+vhdl isim_temp "PrgTeller2dig.vhd"
+vhdl isim_temp "PrgTeller2dig_TB.vhd"

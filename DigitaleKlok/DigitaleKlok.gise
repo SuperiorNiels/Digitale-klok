@@ -31,6 +31,12 @@
     <file xil_pn:fileType="FILE_XST" xil_pn:name="Knoppen.xst"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Knoppen_tb_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Knoppen_tb_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="PrgTeller2dig_TB_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="PrgTeller2dig_TB_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="PrgTeller2dig_TB_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="PrgTeller2dig_TB_stx_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="PrgTeller_TB_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="PrgTeller_TB_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="T6_tb_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="T6_tb_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="T6_tb_isim_beh.wdb"/>
@@ -57,25 +63,26 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1476900423" xil_pn:in_ck="7336786353994022256" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1476900423">
+    <transform xil_pn:end_ts="1476949709" xil_pn:in_ck="3176826433862253065" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1476949709">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="Debouncer.vhd"/>
       <outfile xil_pn:name="Debouncer_tb.vhd"/>
       <outfile xil_pn:name="Knoppen.vhd"/>
       <outfile xil_pn:name="Knoppen_tb.vhd"/>
-      <outfile xil_pn:name="T6.vhd"/>
-      <outfile xil_pn:name="T6_tb.vhd"/>
+      <outfile xil_pn:name="PrgTeller.vhd"/>
+      <outfile xil_pn:name="PrgTeller2dig.vhd"/>
+      <outfile xil_pn:name="PrgTeller2dig_TB.vhd"/>
+      <outfile xil_pn:name="PrgTeller_TB.vhd"/>
       <outfile xil_pn:name="Timing.vhd"/>
       <outfile xil_pn:name="Timing_TB.vhd"/>
       <outfile xil_pn:name="deler.vhd"/>
-      <outfile xil_pn:name="teller.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1476900050" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="3025496017698870374" xil_pn:start_ts="1476900050">
+    <transform xil_pn:end_ts="1476949424" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="6291597531070602594" xil_pn:start_ts="1476949424">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1476900050" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="4940864117457171684" xil_pn:start_ts="1476900050">
+    <transform xil_pn:end_ts="1476949424" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="8252687109185336800" xil_pn:start_ts="1476949424">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -83,34 +90,35 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1476946451" xil_pn:in_ck="7336786353994022256" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1476946451">
+    <transform xil_pn:end_ts="1476949709" xil_pn:in_ck="3176826433862253065" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1476949709">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="Debouncer.vhd"/>
       <outfile xil_pn:name="Debouncer_tb.vhd"/>
       <outfile xil_pn:name="Knoppen.vhd"/>
       <outfile xil_pn:name="Knoppen_tb.vhd"/>
-      <outfile xil_pn:name="T6.vhd"/>
-      <outfile xil_pn:name="T6_tb.vhd"/>
+      <outfile xil_pn:name="PrgTeller.vhd"/>
+      <outfile xil_pn:name="PrgTeller2dig.vhd"/>
+      <outfile xil_pn:name="PrgTeller2dig_TB.vhd"/>
+      <outfile xil_pn:name="PrgTeller_TB.vhd"/>
       <outfile xil_pn:name="Timing.vhd"/>
       <outfile xil_pn:name="Timing_TB.vhd"/>
       <outfile xil_pn:name="deler.vhd"/>
-      <outfile xil_pn:name="teller.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1476946455" xil_pn:in_ck="7336786353994022256" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="7645221329090152746" xil_pn:start_ts="1476946451">
+    <transform xil_pn:end_ts="1476949712" xil_pn:in_ck="3176826433862253065" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="3283445289261202468" xil_pn:start_ts="1476949709">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="T6_tb_beh.prj"/>
-      <outfile xil_pn:name="T6_tb_isim_beh.exe"/>
+      <outfile xil_pn:name="PrgTeller2dig_TB_beh.prj"/>
+      <outfile xil_pn:name="PrgTeller2dig_TB_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
       <outfile xil_pn:name="isim"/>
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1476946455" xil_pn:in_ck="2448144784250813722" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8900265766514915255" xil_pn:start_ts="1476946455">
+    <transform xil_pn:end_ts="1476949712" xil_pn:in_ck="-3090323634238944452" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-8353021620264829647" xil_pn:start_ts="1476949712">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="T6_tb_isim_beh.wdb"/>
+      <outfile xil_pn:name="PrgTeller2dig_TB_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
     </transform>
