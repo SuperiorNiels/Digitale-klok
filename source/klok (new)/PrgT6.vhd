@@ -107,7 +107,7 @@ begin
 	Port map(sysclk => sysclk,
 				cnten => tcT5CntenT6,
 				reset => reset,
-				count => count(19 downto 16),
+				count => count(23 downto 20),
 				tc => tc);	
 
 
