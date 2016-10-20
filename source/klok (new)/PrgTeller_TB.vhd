@@ -44,6 +44,7 @@ ARCHITECTURE behavior OF PrgTeller_TB IS
          sysclk : IN  std_logic;
          cnten : IN  std_logic;
          reset : IN  std_logic;
+			updwn	: IN 	std_logic := '1';
          min : IN  std_logic_vector(3 downto 0);
          max : IN  std_logic_vector(3 downto 0);
          count : OUT  std_logic_vector(3 downto 0);
@@ -55,7 +56,8 @@ ARCHITECTURE behavior OF PrgTeller_TB IS
    --Inputs
    signal sysclk : std_logic := '0';
    signal cnten : std_logic := '0';
-   signal reset : std_logic := '0';
+   signal reset : std_logic := '1';
+	signal updwn : std_logic := '1';
    signal min : std_logic_vector(3 downto 0) := "0001";
    signal max : std_logic_vector(3 downto 0) := "1001";
 
@@ -75,6 +77,7 @@ BEGIN
           reset => reset,
           min => min,
           max => max,
+			 updwn => updwn,
           count => count,
           tc => tc
         );
@@ -94,12 +97,15 @@ BEGIN
    begin		
       -- hold reset state for 100 ns.
       wait for 100 ns;
+		updwn <= '1';
 		cnten <= '0';
 		reset <= '1';
 		wait for 100 ns;
 		reset <= '0';
 		cnten <= '1';
-      wait;
+      wait for 2000 ns;
+		updwn <= '0';
+		wait;
    end process;
 
 END;
