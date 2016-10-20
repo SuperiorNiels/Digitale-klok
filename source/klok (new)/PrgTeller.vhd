@@ -22,8 +22,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity PrgTeller is
+	Generic(min :  STD_LOGIC_VECTOR (3 downto 0) := x"0";
+			  max :  STD_LOGIC_VECTOR (3 downto 0) := x"9");
 	Port (sysclk,cnten,reset 	: in  STD_LOGIC;
-         min,max 					: in  STD_LOGIC_VECTOR (3 downto 0) ;
 			updwn						: in 	STD_LOGIC := '1';
          count 					: out  STD_LOGIC_VECTOR (3 downto 0);
          tc 						: out  STD_LOGIC);
@@ -47,7 +48,7 @@ begin
 			end if;
 		end if;				
 	end process;
-	EindeTellen : process (cnten , min , max , updwn , sysclk)
+	EindeTellen : process (sysclk)
 	begin
 		if(std_logic_vector(count_sig) = max) and updwn = '1' and cnten = '1' then tc <= '1';
 		elsif(std_logic_vector(count_sig) = min) and updwn = '0' and cnten = '1' then tc <= '1';
