@@ -40,13 +40,13 @@ ARCHITECTURE behavior OF PrgTeller2dig_TB IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT PrgTeller2dig
+	 GENERIC (  bcd_min : IN  std_logic_vector(7 downto 0) := x"00";
+					bcd_max : IN  std_logic_vector(7 downto 0) := x"99");
     PORT(
          cnten : IN  std_logic;
          updwn : IN  std_logic;
          reset : IN  std_logic;
          sysclk : IN  std_logic;
-         bcd_min : IN  std_logic_vector(7 downto 0);
-         bcd_max : IN  std_logic_vector(7 downto 0);
          bcd_cnt : OUT  std_logic_vector(7 downto 0);
          tc : OUT  std_logic
         );
@@ -76,8 +76,6 @@ BEGIN
           updwn => updwn,
           reset => reset,
           sysclk => sysclk,
-          bcd_min => bcd_min,
-          bcd_max => bcd_max,
           bcd_cnt => bcd_cnt,
           tc => tc
         );
@@ -99,14 +97,13 @@ BEGIN
       wait for 100 ns;	
 		cnten <= '0'; reset <= '1'; updwn <= '1'; wait for 10 ns;
 		
-		bcd_min <= x"01"; bcd_max <= x"23"; wait for 10 ns;
-		cnten <= '1'; reset <= '0'; updwn <= '1'; wait for 200 ns;
+		cnten <= '1'; reset <= '0'; updwn <= '1'; wait for 2000 ns;
 		
-		bcd_min <= x"01"; bcd_max <= x"72"; wait for 10 ns;
-		cnten <= '1'; reset <= '0'; updwn <= '0'; wait for 200 ns;
+		cnten <= '1'; reset <= '0'; updwn <= '0'; wait for 2000 ns;
 		
-		bcd_min <= x"01"; bcd_max <= x"99"; wait for 10 ns;
-		cnten <= '1'; reset <= '0'; updwn <= '1'; wait for 200 ns;
+		cnten <= '1'; reset <= '0'; updwn <= '1'; wait for 2000 ns;
+		
+
       wait;
    end process;
 

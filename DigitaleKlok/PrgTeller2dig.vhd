@@ -22,12 +22,13 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity PrgTeller2dig is
+	Generic (bcd_min		:	std_logic_vector(7 downto 0):= x"00";
+				bcd_max		:	std_logic_vector(7 downto 0):= x"99");
+				
     port ( 	cnten			:	in  std_logic;
 				updwn			:	in  std_logic := '1';
 				reset 		: 	in  std_logic;
 				sysclk 		: 	in  std_logic;
-				bcd_min		:	in	std_logic_vector(7 downto 0):= x"00";
-				bcd_max		:	in	std_logic_vector(7 downto 0):= x"99";
 				bcd_cnt		:	out std_logic_vector(7 downto 0);
 				tc 			:	out std_logic);
 end PrgTeller2dig;

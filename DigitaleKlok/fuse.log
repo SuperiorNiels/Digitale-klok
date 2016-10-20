@@ -10,11 +10,11 @@ Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package numeric_std
-Compiling architecture behavioral of entity PrgTeller2dig [prgteller2dig_default]
+Compiling architecture behavioral of entity PrgTeller2dig [\PrgTeller2dig(('0','0','0','0',...]
 Compiling architecture behavior of entity prgteller2dig_tb
 Time Resolution for simulation is 1ps.
 WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: Het systeem kan het opgegeven pad niet vinden, "isim\PrgTeller2dig_TB_isim_beh.exe.sim\libPortability.dll".
 Compiled 6 VHDL Units
 Built simulation executable C:/GitHub/Digitale-klok/Digitale-klok/DigitaleKlok/PrgTeller2dig_TB_isim_beh.exe
-Fuse Memory Usage: 35344 KB
-Fuse CPU Usage: 406 ms
+Fuse Memory Usage: 35312 KB
+Fuse CPU Usage: 452 ms
