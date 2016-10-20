@@ -1,0 +1,29 @@
+Command line:
+   Knoppen_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  58018
+
+Thu Oct 20 09:48:20 2016
+
+
+ Elaboration Time: 0.015625 sec
+
+ Current Memory Usage: 836.682 Meg
+
+ Total Signals          : 68
+ Total Nets             : 34
+ Total Signal Drivers   : 31
+ Total Blocks           : 11
+ Total Primitive Blocks : 9
+ Total Processes        : 23
+ Total Traceable Variables  : 10
+ Total Scalar Nets and Variables : 396
+Total Line Count : 86
+
+ Total Simulation Time: 0.046875 sec
+
+ Current Memory Usage: 836.682 Meg
+
+Thu Oct 20 09:48:27 2016
+

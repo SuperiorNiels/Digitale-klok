@@ -1,0 +1,2 @@
+vhdl isim_temp "one_pulse.vhd"
+vhdl isim_temp "one_pulse_tb.vhd"

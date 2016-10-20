@@ -1,0 +1,3 @@
+vhdl isim_temp "teller.vhd"
+vhdl isim_temp "T6.vhd"
+vhdl isim_temp "T6_tb.vhd"

@@ -1,0 +1,3 @@
+vhdl isim_temp "one_pulse.vhd"
+vhdl isim_temp "Debouncer.vhd"
+vhdl isim_temp "Knoppen.vhd"
