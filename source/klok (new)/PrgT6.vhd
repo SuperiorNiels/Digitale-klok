@@ -21,8 +21,8 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity PrgT6 is
-	Generic(min1,min2,min3,min4,min5,min6 : std_logic_vector(3 downto 0) := x"0";
-			  max1,max2,max3,max4,max5,max6 : std_logic_vector(3 downto 0) := x"9");
+	Generic(min1,min2,min3,min4,min5,min6 : std_logic_vector(3 downto 0) := "0000";
+			  max1,max2,max3,max4,max5,max6 : std_logic_vector(3 downto 0) := "1001");
     Port ( sysclk : in  STD_LOGIC;
            cnten : in  STD_LOGIC;
            reset : in  STD_LOGIC;
