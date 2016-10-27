@@ -37,7 +37,7 @@ end one_pulse;
 
 
 ARCHITECTURE behavioral of one_pulse is
-signal delay1, delay2, delay3: STD_LOGIC;
+signal delay1, delay2, delay3: STD_LOGIC := '0';
 begin
 	process(sysclk)
 		begin

@@ -36,7 +36,7 @@ entity Debouncer is
 end Debouncer;
 
 architecture Behavioral of Debouncer is
-signal temp1, temp2, temp3 : STD_LOGIC;
+signal temp1, temp2, temp3 : STD_LOGIC := '0';
 begin
 	process(debclk)
 	begin
