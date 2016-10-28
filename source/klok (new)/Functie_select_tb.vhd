@@ -118,6 +118,14 @@ BEGIN
 		in1 <= '1';
 		wait for 10 ns;
 		in1 <= '0';
+		wait for 10 ns;
+		in2 <= '1';
+		wait for 10 ns;
+		in2 <= '0';
+		wait for 10 ns;
+		in3 <= '1';
+		wait for 10 ns;
+		in3 <= '0';
 		wait for 100 ns;
 		
 		
@@ -127,6 +135,14 @@ BEGIN
 		in1 <= '1';
 		wait for 10 ns;
 		in1 <= '0';
+		wait for 10 ns;
+		in2 <= '1';
+		wait for 10 ns;
+		in2 <= '0';
+		wait for 10 ns;
+		in3 <= '1';
+		wait for 10 ns;
+		in3 <= '0';
 		wait for 100 ns;
 		
 		in4 <= '1';
@@ -135,11 +151,31 @@ BEGIN
 		in1 <= '1';
 		wait for 10 ns;
 		in1 <= '0';
+		wait for 10 ns;
+		in2 <= '1';
+		wait for 10 ns;
+		in2 <= '0';
+		wait for 10 ns;
+		in3 <= '1';
+		wait for 10 ns;
+		in3 <= '0';
 		wait for 100 ns;
+		
 		in4 <= '1';
 		wait for 10 ns;
 		in4 <= '0';
 		
+		in1 <= '1';
+		wait for 10 ns;
+		in1 <= '0';
+		wait for 10 ns;
+		in2 <= '1';
+		wait for 10 ns;
+		in2 <= '0';
+		wait for 10 ns;
+		in3 <= '1';
+		wait for 10 ns;
+		in3 <= '0';
 		wait for 10 ns;
       wait for sysclk_period*10;
 
