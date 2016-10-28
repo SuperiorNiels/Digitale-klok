@@ -20,18 +20,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity Prg2digT3 is
 	Generic(	min1,min2,min3 : std_logic_vector(7 downto 0) := x"00";
-				max1,max2,max3 : std_logic_vector(7 downto 0) := x"23");
+				max1,max2,max3 : std_logic_vector(7 downto 0) := x"99");
     Port ( sysclk : in  STD_LOGIC;
            cnten : in  STD_LOGIC;
            reset : in  STD_LOGIC;

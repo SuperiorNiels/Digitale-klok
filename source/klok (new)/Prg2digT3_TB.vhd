@@ -28,10 +28,6 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
- 
 ENTITY Prg2digT3_TB IS
 END Prg2digT3_TB;
  
@@ -90,13 +86,13 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      wait for 100 ns;	
+      wait for 100 ns;	--start optellen
 		reset <= '0'; cnten <= '1'; updwn <= '1';
-		wait for 1000 ns;
+		wait for 1000 ns; --start aftellen
 		reset <= '0'; cnten <= '1'; updwn <= '0';
-		wait for 1000 ns;
+		wait for 1000 ns; -- reset 
 		reset <= '1'; cnten <= '1'; updwn <= '1';
-		wait for 1000 ns;
+		wait for 1000 ns; -- terug optellen vanaf begin
 		reset <= '0'; cnten <= '1'; updwn <= '1';
 		wait for 1000 ns;
       wait;
