@@ -60,8 +60,9 @@ begin
 	begin
 		if rising_edge(sysclk) then
 			case present_state is
-				when weergave => cnten1 <= '1'; updwn1 <= '1'; ostate <= "0001";
+				when weergave => cnten1 <= '1'; updwn1 <= '1'; updwn2 <= '1'; updwn3 <= '1'; ostate <= "0001";
 				when InstellenUU => ostate <= "0010";
+					cnten1 <= '0'; cnten2 <= '0';
 					if incr = '1' then
 						updwn3 <= '1'; cnten3 <= '1';
 					elsif decr = '1' then
@@ -69,6 +70,7 @@ begin
 					else cnten3 <= '0';
 					end if;
 				when InstellenMM => ostate <= "0100";
+				cnten1 <= '0'; cnten3 <= '0';
 					if incr = '1' then
 						updwn2 <= '1'; cnten2 <= '1';
 					elsif decr = '1' then
@@ -76,6 +78,7 @@ begin
 					else cnten2 <= '0';
 					end if;
 				when InstellenSS => ostate <= "1000";
+				cnten2 <= '0'; cnten3 <= '0';
 					if incr = '1' then
 						updwn1 <= '1'; cnten1 <= '1';
 					elsif decr = '1' then

@@ -32,7 +32,9 @@ entity Prg2digT3 is
 			  updwn2 : in  STD_LOGIC;
 			  updwn3 : in  STD_LOGIC;
            count : out  STD_LOGIC_VECTOR (23 downto 0);
-           tc : out  STD_LOGIC);
+           tc1 : inout  STD_LOGIC;
+			  tc2 : inout  STD_LOGIC;
+			  tc3 : inout  STD_LOGIC);
 end Prg2digT3;
 
 architecture Behavioral of Prg2digT3 is
@@ -58,27 +60,27 @@ begin
 					updwn => updwn1,
 					reset => reset,
 					bcd_cnt => count(7 downto 0),
-					tc => tcT1CntenT2);
+					tc => tc1);
 	
 	T2 : PrgTeller2dig
 		Generic map(bcd_min => min2,
 						bcd_max => max2)
 		Port map(sysclk => sysclk,
-					cnten => cnten2 or tcT2CntenT3,
+					cnten => cnten2 or tc1,
 					updwn => updwn2,
 					reset => reset,
 					bcd_cnt => count(15 downto 8),
-					tc => tcT2CntenT3);
+					tc => tc2);
 					
 	T3 : PrgTeller2dig
 		Generic map(bcd_min => min3,
 						bcd_max => max3)
 		Port map(sysclk => sysclk,
-					cnten => cnten3 or tcT2CntenT3,
+					cnten => cnten3 or tc2,
 					updwn => updwn3,
 					reset => reset,
 					bcd_cnt => count(23 downto 16),
-					tc => tc);
+					tc => tc3);
 					
 end Behavioral;
 

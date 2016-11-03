@@ -45,7 +45,9 @@ architecture Behavioral of TijdModule is
 			  updwn2 : in  STD_LOGIC;
 			  updwn3 : in  STD_LOGIC;
            count : out  STD_LOGIC_VECTOR (23 downto 0);
-           tc : out  STD_LOGIC);
+           tc1 : inout  STD_LOGIC;
+			  tc2 : inout  STD_LOGIC;
+			  tc3 : inout  STD_LOGIC);
 	end component;
 	
 	Component ModeFSM
@@ -75,6 +77,8 @@ architecture Behavioral of TijdModule is
 	signal en1  : std_logic := '0';
 	signal en2  : std_logic := '0';
 	signal en3  : std_logic := '0';
+	signal tc1Cnten2 : std_logic := '0';
+	signal tc2Cnten3 : std_logic := '0';
 	
 begin
 	FSM : ModeFSM
@@ -94,15 +98,14 @@ begin
 	Generic map(min1=>min1, min2=>min2, min3=>min3, max1=>max1, max2=>max2, max3=>max3)
 	Port map(sysclk => sysclk,
 				reset => '0',
-				cnten1 => cnten or en1,
+				cnten1 => cnten and en1,
 				updwn1 => ud1,
-				cnten2 => en2,
+				cnten2 => en2 or tc1Cnten2,
 				updwn2 => ud2,
-				cnten3 => en3,
+				cnten3 => en3 or tc2Cnten3,
 				updwn3 => ud3,
 				count => count,
-				tc => tc);
-				
-				
+				tc1 => tc1Cnten2,
+				tc2 => tc2Cnten3);			
 end Behavioral;
 

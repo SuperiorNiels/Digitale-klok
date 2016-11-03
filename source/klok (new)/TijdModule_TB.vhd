@@ -90,9 +90,9 @@ BEGIN
 	cnten_process : process
 	begin 
 		cnten <= '0';
-		wait for sysclk_period*2;
+		wait for 100 ns;
 		cnten <= '1';
-		wait for sysclk_period*2;
+		wait for 10 ns;
 	end process;
 
    -- Stimulus process
