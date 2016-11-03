@@ -98,15 +98,39 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 100 ns.
+      
+		-- Instellen state 1
 		mode <= '1'; wait for 10 ns;
 		mode <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+		wait for 100 ns;
+		-- Instellen state 2
 		mode <= '1'; wait for 10 ns;
 		mode <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+		wait for 100 ns;
+		-- Instellen state 3
 		mode <= '1'; wait for 10 ns;
 		mode <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+		wait for 100 ns;
+		-- Instellen state 4
 		mode <= '1'; wait for 10 ns;
 		mode <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+		wait for 100 ns;
 		wait;
 		
    end process;
