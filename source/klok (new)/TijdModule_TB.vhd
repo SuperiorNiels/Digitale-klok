@@ -41,7 +41,7 @@ ARCHITECTURE behavior OF TijdModule_TB IS
  
     COMPONENT TijdModule
     Port ( sysclk : in  STD_LOGIC;
-           cnten : in  STD_LOGIC;
+           cnten : in STD_LOGIC;
            mode : in  STD_LOGIC;
            incr : in  STD_LOGIC;
            decr : in  STD_LOGIC;
@@ -90,17 +90,25 @@ BEGIN
 	cnten_process : process
 	begin 
 		cnten <= '0';
-		wait for sysclk_period;
+		wait for sysclk_period*2;
 		cnten <= '1';
-		wait for sysclk_period;
+		wait for sysclk_period*2;
 	end process;
 
    -- Stimulus process
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      mode <= '1';
+		mode <= '1'; wait for 10 ns;
+		mode <= '0'; wait for 100 ns;
+		mode <= '1'; wait for 10 ns;
+		mode <= '0'; wait for 100 ns;
+		mode <= '1'; wait for 10 ns;
+		mode <= '0'; wait for 100 ns;
+		mode <= '1'; wait for 10 ns;
+		mode <= '0'; wait for 100 ns;
 		wait;
+		
    end process;
 
 END;

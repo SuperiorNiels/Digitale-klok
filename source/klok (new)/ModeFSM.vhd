@@ -60,7 +60,7 @@ begin
 	begin
 		if rising_edge(sysclk) then
 			case present_state is
-				when weergave => cnten1 <= '1'; ostate <= "0001";
+				when weergave => cnten1 <= '1'; updwn1 <= '1'; ostate <= "0001";
 				when InstellenUU => ostate <= "0010";
 					if incr = '1' then
 						updwn3 <= '1'; cnten3 <= '1';

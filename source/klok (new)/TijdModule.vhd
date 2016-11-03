@@ -94,7 +94,7 @@ begin
 	Generic map(min1=>min1, min2=>min2, min3=>min3, max1=>max1, max2=>max2, max3=>max3)
 	Port map(sysclk => sysclk,
 				reset => '0',
-				cnten1 => en1 and cnten,
+				cnten1 => cnten or en1,
 				updwn1 => ud1,
 				cnten2 => en2,
 				updwn2 => ud2,
