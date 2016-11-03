@@ -40,15 +40,14 @@ ARCHITECTURE behavior OF TijdModule_TB IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT TijdModule
-    PORT(
-         sysclk : IN  std_logic;
-         cnten : INOUT  std_logic;
-         mode : IN  std_logic;
-         incr : IN  std_logic;
-         decr : IN  std_logic;
-         ocount : INOUT  std_logic_vector(23 downto 0);
-         ostate : OUT  std_logic_vector(1 downto 0)
-        );
+    Port ( sysclk : in  STD_LOGIC;
+           cnten : in  STD_LOGIC;
+           mode : in  STD_LOGIC;
+           incr : in  STD_LOGIC;
+           decr : in  STD_LOGIC;
+           count : inout  STD_LOGIC_VECTOR (23 downto 0);
+           ostate : out  STD_LOGIC_VECTOR (3 downto 0);
+			  tc : out STD_LOGIC);
     END COMPONENT;
     
 
@@ -59,11 +58,9 @@ ARCHITECTURE behavior OF TijdModule_TB IS
    signal incr : std_logic := '0';
    signal decr : std_logic := '0';
 
-	--BiDirs
+	--Outputs
    signal count : std_logic_vector(23 downto 0);
-
- 	--Outputs
-   signal ostate : std_logic_vector(1 downto 0);
+   signal ostate : std_logic_vector(3 downto 0);
 
    -- Clock period definitions
    constant sysclk_period : time := 10 ns;
@@ -77,7 +74,7 @@ BEGIN
           mode => mode,
           incr => incr,
           decr => decr,
-          ocount => count,
+          count => count,
           ostate => ostate
         );
 
@@ -90,42 +87,20 @@ BEGIN
 		wait for sysclk_period/2;
    end process;
  
+	cnten_process : process
+	begin 
+		cnten <= '0';
+		wait for sysclk_period;
+		cnten <= '1';
+		wait for sysclk_period;
+	end process;
 
    -- Stimulus process
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
       mode <= '1';
-		wait for 100 ns;	
-		
-		cnten <= '1'; mode <= '0'; 
-		wait for 2000 ns; mode <= '0';
-		incr <= '1'; wait for 10 ns; 
-		incr <= '0'; decr <= '1';
-		wait for 10 ns; 
-		decr <= '0';
-		
-		cnten <= '1'; mode <= '1'; 
-		wait for 20 ns;
-		incr <= '1'; wait for 10 ns; 
-		incr <= '0'; decr <= '1';
-		wait for 10 ns; 
-		decr <= '0';
-		
-		cnten <= '1'; mode <= '1'; 
-		wait for 20 ns; mode <= '0';
-		incr <= '1'; wait for 10 ns; 
-		incr <= '0'; decr <= '1';
-		wait for 10 ns; 
-		decr <= '0';
-		
-		cnten <= '1'; mode <= '1'; 
-		wait for 20 ns; mode <= '0';
-		incr <= '1'; wait for 10 ns; 
-		incr <= '0'; decr <= '1';
-		wait for 10 ns; 
-		decr <= '0';
-      wait;
+		wait;
    end process;
 
 END;
