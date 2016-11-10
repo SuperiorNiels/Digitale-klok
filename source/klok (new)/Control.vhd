@@ -34,6 +34,8 @@ entity Control is
            dig1 : in  STD_LOGIC_VECTOR (3 downto 0);
            dig2 : in  STD_LOGIC_VECTOR (3 downto 0);
            dig3 : in  STD_LOGIC_VECTOR (3 downto 0);
+			  blank0 : in STD_LOGIC;
+			  blank1 : in STD_LOGIC;
            en : in  STD_LOGIC;
            sysclk : in  STD_LOGIC;
            bcdout : out  STD_LOGIC_VECTOR (3 downto 0);
@@ -64,12 +66,17 @@ begin
 	end process; 
 	DIGSELECT: process (dignr_int) 
 		begin 
-			case dignr_int is 
-				when 0 => dignrout <= "1110";
-				when 1 => dignrout <= "1101"; 
-				when 2 => dignrout <= "1011"; 
-				when 3 => dignrout <= "0111"; 
-end case; 
+			if blank0 = '1' then dignrout <= "0011";
+			elsif blank1 = '1' then dignrout <= "1100";
+			else
+				case dignr_int is 
+					when 0 => dignrout <= "1110";
+					when 1 => dignrout <= "1101"; 
+					when 2 => dignrout <= "1011"; 
+					when 3 => dignrout <= "0111";
+				end case; 
+			end if;
+
 end process;
 
 end Behavioral;

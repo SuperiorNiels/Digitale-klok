@@ -51,7 +51,7 @@ architecture Behavioral of Timing is
 	constant divD1 : integer:= 1; --1000000 = 1ms
 	constant divD2 : integer:= 10; --10000000 = 10ms
 	constant divD3 : integer:= 100; --100000000 = 100ms
-	constant divD4 : integer:= 1000; --1000000000 = 1sec
+	constant divD4 : integer:= 100000000; --1000000000 = 1sec
 	
 begin
 	D1: deler GENERIC MAP(div => divD1)
