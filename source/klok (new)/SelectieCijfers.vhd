@@ -30,8 +30,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity SelectieCijfers is
-    Port ( sysclk : in STD_LOGIC;
-			  idig : in  STD_LOGIC_VECTOR (23 downto 0);
+    Port ( idig : in  STD_LOGIC_VECTOR (23 downto 0);
            istate : in  STD_LOGIC_VECTOR (3 downto 0);
            odig1 : out  STD_LOGIC_VECTOR (3 downto 0);
            odig2 : out  STD_LOGIC_VECTOR (7 downto 4);
@@ -41,9 +40,8 @@ end SelectieCijfers;
 
 architecture Behavioral of SelectieCijfers is	
 begin
-SELCIJFER : process(sysclk)
+SELCIJFER : process(istate,idig)
 	begin
-		if rising_edge(sysclk) then
 			if istate = "0001" or istate = "0010" or istate = "0100" then --Instellen UU, MM en weergave
 				odig1(3 downto 0) <= idig(11 downto 9);
 				odig2(7 downto 4) <= idig(15 downto 12);
@@ -55,7 +53,6 @@ SELCIJFER : process(sysclk)
 				odig3(11 downto 8) <= "0000";
 				odig4(15 downto 12) <= "0000";
 			end if;
-		end if;
 	end process;
 end Behavioral;
 

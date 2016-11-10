@@ -41,7 +41,6 @@ ARCHITECTURE behavior OF SelectieCijfers_tb IS
  
     COMPONENT SelectieCijfers
     PORT(
-			sysclk : IN std_logic;
          idig : IN  std_logic_vector(23 downto 0);
          istate : IN  std_logic_vector(3 downto 0);
          odig1 : OUT  std_logic_vector(3 downto 0);
@@ -55,7 +54,6 @@ ARCHITECTURE behavior OF SelectieCijfers_tb IS
    --Inputs
    signal idig : std_logic_vector(23 downto 0) := (others => '0');
    signal istate : std_logic_vector(3 downto 0) := (others => '0');
-	signal sysclk : std_logic;
 
  	--Outputs
    signal odig1 : std_logic_vector(3 downto 0);
@@ -71,24 +69,13 @@ BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: SelectieCijfers PORT MAP (
-          sysclk => '0',
 			 idig => idig,
           istate => istate,
           odig1 => odig1,
           odig2 => odig2,
           odig3 => odig3,
           odig4 => odig4
-        );
-
-   -- Clock process definitions
-   sysclk_process :process
-   begin
-		sysclk <= '0';
-		wait for sysclk_period/2;
-		sysclk <= '1';
-		wait for sysclk_period/2;
-   end process;
- 
+        ); 
 
    -- Stimulus process
    stim_proc: process
