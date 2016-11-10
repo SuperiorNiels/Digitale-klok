@@ -27,7 +27,7 @@ entity TijdModule is
            mode : in  STD_LOGIC;
            incr : in  STD_LOGIC;
            decr : in  STD_LOGIC;
-           count : inout  STD_LOGIC_VECTOR (23 downto 0);
+           count : out  STD_LOGIC_VECTOR (23 downto 0);
            ostate : out  STD_LOGIC_VECTOR (3 downto 0);
 			  tc : out STD_LOGIC);
 end TijdModule;
@@ -45,9 +45,9 @@ architecture Behavioral of TijdModule is
 			  updwn2 : in  STD_LOGIC;
 			  updwn3 : in  STD_LOGIC;
            count : out  STD_LOGIC_VECTOR (23 downto 0);
-           tc1 : inout  STD_LOGIC;
-			  tc2 : inout  STD_LOGIC;
-			  tc3 : inout  STD_LOGIC);
+           tc1 : out  STD_LOGIC;
+			  tc2 : out  STD_LOGIC;
+			  tc3 : out  STD_LOGIC);
 	end component;
 	
 	Component ModeFSM
@@ -110,6 +110,7 @@ begin
 				updwn3 => ud3,
 				count => count,
 				tc1 => tc1Cnten2,
-				tc2 => tc2Cnten3);			
+				tc2 => tc2Cnten3,
+				tc3 => tc);			
 end Behavioral;
 

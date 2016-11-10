@@ -32,9 +32,9 @@ entity Prg2digT3 is
 			  updwn2 : in  STD_LOGIC;
 			  updwn3 : in  STD_LOGIC;
            count : out  STD_LOGIC_VECTOR (23 downto 0);
-           tc1 : inout  STD_LOGIC;
-			  tc2 : inout  STD_LOGIC;
-			  tc3 : inout  STD_LOGIC);
+           tc1 : out  STD_LOGIC;
+			  tc2 : out  STD_LOGIC;
+			  tc3 : out  STD_LOGIC);
 end Prg2digT3;
 
 architecture Behavioral of Prg2digT3 is
