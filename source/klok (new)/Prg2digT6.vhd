@@ -66,7 +66,7 @@ begin
 		Generic map(bcd_min => min2,
 						bcd_max => max2)
 		Port map(sysclk => sysclk,
-					cnten => cnten2 or tc1,
+					cnten => cnten2,
 					updwn => updwn2,
 					reset => reset,
 					bcd_cnt => count(15 downto 8),
@@ -76,7 +76,7 @@ begin
 		Generic map(bcd_min => min3,
 						bcd_max => max3)
 		Port map(sysclk => sysclk,
-					cnten => cnten3 or tc2,
+					cnten => cnten3,
 					updwn => updwn3,
 					reset => reset,
 					bcd_cnt => count(23 downto 16),

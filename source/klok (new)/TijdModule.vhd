@@ -55,6 +55,7 @@ architecture Behavioral of TijdModule is
 				mode : in  STD_LOGIC;
 				incr : in  STD_LOGIC;
 				decr : in  STD_LOGIC;
+				oweergave : out STD_LOGIC;
 				cnten1 : out STD_LOGIC;
 				updwn1 : out STD_LOGIC;
 				cnten2 : out STD_LOGIC;
@@ -77,8 +78,10 @@ architecture Behavioral of TijdModule is
 	signal en1  : std_logic := '0';
 	signal en2  : std_logic := '0';
 	signal en3  : std_logic := '0';
+	signal enT  : std_logic := '0';
 	signal tc1Cnten2 : std_logic := '0';
 	signal tc2Cnten3 : std_logic := '0';
+	signal weergave : std_logic := '0';
 	
 begin
 	FSM : ModeFSM
@@ -86,6 +89,7 @@ begin
 				mode => mode,
 				incr => incr,
 				decr => decr,
+				oweergave => weergave,
 				cnten1 => en1,
 				updwn1 => ud1,
 				cnten2 => en2,
@@ -98,7 +102,7 @@ begin
 	Generic map(min1=>min1, min2=>min2, min3=>min3, max1=>max1, max2=>max2, max3=>max3)
 	Port map(sysclk => sysclk,
 				reset => '0',
-				cnten1 => cnten and en1,
+				cnten1 => (cnten and weergave) or en1,
 				updwn1 => ud1,
 				cnten2 => en2 or tc1Cnten2,
 				updwn2 => ud2,

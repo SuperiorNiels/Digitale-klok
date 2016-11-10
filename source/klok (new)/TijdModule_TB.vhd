@@ -102,7 +102,7 @@ BEGIN
 		-- Instellen state 1
 		mode <= '1'; wait for 10 ns;
 		mode <= '0'; wait for 100 ns;
-		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 50 ns;
 		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
@@ -110,7 +110,7 @@ BEGIN
 		-- Instellen state 2
 		mode <= '1'; wait for 10 ns;
 		mode <= '0'; wait for 100 ns;
-		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 50 ns;
 		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
