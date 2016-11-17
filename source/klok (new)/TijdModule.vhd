@@ -34,13 +34,13 @@ end TijdModule;
 
 architecture Behavioral of TijdModule is
 	Component Prg2digT3
-		Generic(	min1,min2,min3 : std_logic_vector(7 downto 0) := x"00";
-					max1,max2,max3 : std_logic_vector(7 downto 0) := x"99");
-		Port ( sysclk : in  STD_LOGIC;
+	
+		Port(min1,min2,min3 : std_logic_vector(7 downto 0);
+			  max1,max2,max3 : std_logic_vector(7 downto 0);
+			  sysclk : in  STD_LOGIC;
            cnten1 : in  STD_LOGIC;
 			  cnten2 : in  STD_LOGIC;
 			  cnten3 : in  STD_LOGIC;
-           reset : in  STD_LOGIC;
            updwn1 : in  STD_LOGIC;
 			  updwn2 : in  STD_LOGIC;
 			  updwn3 : in  STD_LOGIC;
@@ -66,9 +66,9 @@ architecture Behavioral of TijdModule is
 		end component;
 	
 	--Signals
-	signal min1 : std_logic_vector(7 downto 0) := x"00";
-	signal min2 : std_logic_vector(7 downto 0) := x"00";
-	signal min3 : std_logic_vector(7 downto 0) := x"00";
+	signal min1 : std_logic_vector(7 downto 0) := x"01";
+	signal min2 : std_logic_vector(7 downto 0) := x"01";
+	signal min3 : std_logic_vector(7 downto 0) := x"01";
 	signal max1 : std_logic_vector(7 downto 0) := x"59";
 	signal max2 : std_logic_vector(7 downto 0) := x"59";
 	signal max3 : std_logic_vector(7 downto 0) := x"23";
@@ -99,9 +99,14 @@ begin
 				ostate => ostate);
 				
 	Teller: Prg2digT3
-	Generic map(min1=>min1, min2=>min2, min3=>min3, max1=>max1, max2=>max2, max3=>max3)
-	Port map(sysclk => sysclk,
-				reset => '0',
+	
+	Port map(min1=>min1,
+				min2=>min2, 
+				min3=>min3, 
+				max1=>max1, 
+				max2=>max2, 
+				max3=>max3,
+				sysclk => sysclk,
 				cnten1 => (cnten and weergave) or en1,
 				updwn1 => ud1,
 				cnten2 => en2 or tc1Cnten2,

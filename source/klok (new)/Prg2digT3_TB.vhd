@@ -36,26 +36,38 @@ ARCHITECTURE behavior OF Prg2digT3_TB IS
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT Prg2digT3
-    PORT(
-         sysclk : IN  std_logic;
-         cnten : IN  std_logic;
-         reset : IN  std_logic;
-         updwn : IN  std_logic;
-         count : OUT  std_logic_vector(23 downto 0);
-         tc : OUT  std_logic
-        );
+    Port ( min1,min2,min3 : std_logic_vector(7 downto 0);
+			  max1,max2,max3 : std_logic_vector(7 downto 0);
+			  sysclk : in  STD_LOGIC;
+           cnten1 : in  STD_LOGIC;
+			  cnten2 : in  STD_LOGIC;
+			  cnten3 : in  STD_LOGIC;
+           updwn1 : in  STD_LOGIC;
+			  updwn2 : in  STD_LOGIC;
+			  updwn3 : in  STD_LOGIC;
+           count : out  STD_LOGIC_VECTOR (23 downto 0);
+           tc1 : out  STD_LOGIC;
+			  tc2 : out  STD_LOGIC;
+			  tc3 : out  STD_LOGIC);
     END COMPONENT;
     
 
    --Inputs
+	signal min1,min2,min3 : std_logic_vector(7 downto 0) := x"00";
+   signal max1,max2,max3 : std_logic_vector(7 downto 0) := x"05";
    signal sysclk : std_logic := '0';
-   signal cnten : std_logic := '0';
-   signal reset : std_logic := '1';
-   signal updwn : std_logic := '0';
+   signal cnten1 : std_logic := '0';
+	signal cnten2 : std_logic := '0';
+	signal cnten3 : std_logic := '0';
+   signal updwn1 : std_logic := '0';
+	signal updwn2 : std_logic := '0';
+	signal updwn3 : std_logic := '0';
 
  	--Outputs
    signal count : std_logic_vector(23 downto 0);
-   signal tc : std_logic;
+   signal tc1 : std_logic;
+	signal tc2 : std_logic;
+	signal tc3 : std_logic;
 
    -- Clock period definitions
    constant sysclk_period : time := 10 ns;
@@ -65,11 +77,22 @@ BEGIN
 	-- Instantiate the Unit Under Test (UUT)
    uut: Prg2digT3 PORT MAP (
           sysclk => sysclk,
-          cnten => cnten,
-          reset => reset,
-          updwn => updwn,
+          cnten1 => cnten1,
+			 cnten2 => cnten2,
+			 cnten3 => cnten3,
+          updwn1 => updwn1,
+			 updwn2 => updwn2,
+			 updwn3 => updwn3,
           count => count,
-          tc => tc
+			 min1 => min1,
+			 min2 => min2,
+			 min3 => min3,
+			 max1 => max1,
+			 max2 => max2,
+			 max3 => max3,
+          tc1 => tc1,
+			 tc2 => tc2,
+			 tc3 => tc3
         );
 
    -- Clock process definitions
@@ -87,13 +110,13 @@ BEGIN
    begin		
       -- hold reset state for 100 ns.
       wait for 100 ns;	--start optellen
-		reset <= '0'; cnten <= '1'; updwn <= '1';
+		cnten1 <= '1'; cnten2 <= '1'; cnten3 <= '1'; updwn1 <= '1'; updwn2 <= '1'; updwn3 <= '1';
 		wait for 1000 ns; --start aftellen
-		reset <= '0'; cnten <= '1'; updwn <= '0';
+		cnten1 <= '1'; cnten2 <= '1'; cnten3 <= '1'; updwn1 <= '0'; updwn2 <= '0'; updwn3 <= '0';
 		wait for 1000 ns; -- reset 
-		reset <= '1'; cnten <= '1'; updwn <= '1';
+		cnten1 <= '1'; cnten2 <= '1'; cnten3 <= '1'; updwn1 <= '1'; updwn2 <= '0'; updwn3 <= '0';
 		wait for 1000 ns; -- terug optellen vanaf begin
-		reset <= '0'; cnten <= '1'; updwn <= '1';
+		cnten1 <= '1'; cnten2 <= '1'; cnten3 <= '1'; updwn1 <= '1'; updwn2 <= '1'; updwn3 <= '1';
 		wait for 1000 ns;
       wait;
    end process;
