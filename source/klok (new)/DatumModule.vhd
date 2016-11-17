@@ -77,6 +77,12 @@ architecture Behavioral of DatumModule is
              maxDag : out  STD_LOGIC_vector); -- max dag
 	end component;
 	
+	constant min1 : std_logic_vector(7 downto 0) := x"01";
+	constant min2 : std_logic_vector(7 downto 0) := x"01";
+	constant min3 : std_logic_vector(7 downto 0) := x"15";
+	constant max2 : std_logic_vector(7 downto 0) := x"12";
+	constant max3 : std_logic_vector(7 downto 0) := x"99";
+	
 	--Signalen intern en generic aansturen
 	signal max1 : std_logic_vector(7 downto 0) := x"30";
 	signal ud1  : std_logic := '1';
@@ -109,12 +115,12 @@ begin
 	Port map( count => interne_count,
 				 maxDag => max1);			
 	Teller : Prg2digT3
-	Port map(min1=>x"00",
-				min2=>x"00",
-				min3=>x"15",
+	Port map(min1=>min1,
+				min2=>min2,
+				min3=>min3,
 				max1=>max1,
-				max2=>x"12",
-				max3=>x"99",
+				max2=>max2,
+				max3=>max3,
 				sysclk => sysclk,
 				cnten1 => (cnten and weergave) or en1,
 				updwn1 => ud1,

@@ -66,12 +66,12 @@ architecture Behavioral of TijdModule is
 		end component;
 	
 	--Signals
-	signal min1 : std_logic_vector(7 downto 0) := x"01";
-	signal min2 : std_logic_vector(7 downto 0) := x"01";
-	signal min3 : std_logic_vector(7 downto 0) := x"01";
-	signal max1 : std_logic_vector(7 downto 0) := x"59";
-	signal max2 : std_logic_vector(7 downto 0) := x"59";
-	signal max3 : std_logic_vector(7 downto 0) := x"23";
+	constant min1 : std_logic_vector(7 downto 0) := x"01";
+	constant min2 : std_logic_vector(7 downto 0) := x"01";
+	constant min3 : std_logic_vector(7 downto 0) := x"01";
+	constant max1 : std_logic_vector(7 downto 0) := x"59";
+	constant max2 : std_logic_vector(7 downto 0) := x"59";
+	constant max3 : std_logic_vector(7 downto 0) := x"23";
 	signal ud1  : std_logic := '1';
 	signal ud2  : std_logic := '1';
 	signal ud3  : std_logic := '1';

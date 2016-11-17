@@ -115,7 +115,6 @@ BEGIN
 		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
-		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		wait for 100 ns;
 		-- Instellen state 2
 		mode <= '1'; wait for 10 ns;
@@ -132,7 +131,7 @@ BEGIN
 		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
-		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+
 		wait for 100 ns;
 		-- Instellen state 4
 		mode <= '1'; wait for 10 ns;
@@ -141,7 +140,7 @@ BEGIN
 		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
-		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+
 		wait for 100 ns;
       wait;
    end process;

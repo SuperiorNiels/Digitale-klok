@@ -47,14 +47,17 @@ BEGIN
 		Tmax <= to_integer(unsigned(bcd_max(7 downto 4))) ;
 	CNT : process (sysclk)  
 		begin		
-			if rising_edge(sysclk) then 
+			if rising_edge(sysclk) then
+				if (Ucnt < Umin) then Ucnt <= Umin; -- Initiele waarde
+				elsif (Tcnt < Tmin) then Tcnt <= Tmin; 
+				end if;
 				if	updwn = '1' and cnten = '1' then												-- OPTELLEN					
 						if Tcnt = Tmax and  Ucnt = Umax then Tcnt <= Tmin;	  Ucnt <= Umin; 	
 						elsif	Ucnt	= 9 then	Tcnt <= Tcnt + 1;Ucnt <= 0;
 						else  Ucnt	<= Ucnt + 1;														
 					end if;
-				elsif updwn ='0' and cnten='1' then													-- AFTELLEN
-						if Tcnt = Tmin and  Ucnt = Umin then Tcnt <= Tmax;Ucnt <= Umax;							
+				elsif updwn ='0' and cnten='1' then												-- AFTELLEN
+						if (Tcnt = Tmin and  Ucnt = Umin) then Tcnt <= Tmax; Ucnt <= Umax;
 						elsif Ucnt = 0 then Tcnt <= Tcnt - 1;Ucnt <= 9 ;	
 						else 	Ucnt <= Ucnt - 1;					
 					end if;

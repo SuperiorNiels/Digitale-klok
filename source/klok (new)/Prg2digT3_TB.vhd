@@ -53,7 +53,7 @@ ARCHITECTURE behavior OF Prg2digT3_TB IS
     
 
    --Inputs
-	signal min1,min2,min3 : std_logic_vector(7 downto 0) := x"00";
+	signal min1,min2,min3 : std_logic_vector(7 downto 0) := x"02";
    signal max1,max2,max3 : std_logic_vector(7 downto 0) := x"05";
    signal sysclk : std_logic := '0';
    signal cnten1 : std_logic := '0';

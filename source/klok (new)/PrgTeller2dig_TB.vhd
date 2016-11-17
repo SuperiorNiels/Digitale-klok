@@ -57,7 +57,7 @@ ARCHITECTURE behavior OF PrgTeller2dig_TB IS
    signal cnten : std_logic := '0';
    signal updwn : std_logic := '0';
    signal sysclk : std_logic := '0';
-   signal bcd_min : std_logic_vector(7 downto 0) := x"00";
+   signal bcd_min : std_logic_vector(7 downto 0) := x"02";
    signal bcd_max : std_logic_vector(7 downto 0) := x"05";
 
  	--Outputs
