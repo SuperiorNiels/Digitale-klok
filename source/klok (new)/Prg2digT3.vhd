@@ -22,8 +22,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Prg2digT3 is
 	 
-    Port ( min1,min2,min3 : std_logic_vector(7 downto 0);
-			  max1,max2,max3 : std_logic_vector(7 downto 0);
+    Port ( min1,min2,min3 : in std_logic_vector(7 downto 0);
+			  max1,max2,max3 : in std_logic_vector(7 downto 0);
 			  sysclk : in  STD_LOGIC;
            cnten1 : in  STD_LOGIC;
 			  cnten2 : in  STD_LOGIC;

@@ -46,7 +46,7 @@ ARCHITECTURE behavior OF DatumModule_tb IS
          mode : IN  std_logic;
          incr : IN  std_logic;
          decr : IN  std_logic;
-         count : INOUT  std_logic_vector(23 downto 0);
+         ocount : INOUT  std_logic_vector(23 downto 0);
          ostate : OUT  std_logic_vector(3 downto 0);
          tc : OUT  std_logic
         );
@@ -79,7 +79,7 @@ BEGIN
           mode => mode,
           incr => incr,
           decr => decr,
-          count => count,
+          ocount => count,
           ostate => ostate,
           tc => tc
         );

@@ -35,7 +35,7 @@ entity DatumModule is
            mode : in  STD_LOGIC;
            incr : in  STD_LOGIC;
            decr : in  STD_LOGIC;
-           count : inout  STD_LOGIC_VECTOR (23 downto 0);
+           ocount : out  STD_LOGIC_VECTOR (23 downto 0);
            ostate : out  STD_LOGIC_VECTOR (3 downto 0);
 			  tc : out STD_LOGIC);
 end DatumModule;
@@ -78,12 +78,7 @@ architecture Behavioral of DatumModule is
 	end component;
 	
 	--Signalen intern en generic aansturen
-	signal min1 : std_logic_vector(7 downto 0) := x"00";
-	signal min2 : std_logic_vector(7 downto 0) := x"00";
-	signal min3 : std_logic_vector(7 downto 0) := x"15";
 	signal max1 : std_logic_vector(7 downto 0) := x"30";
-	signal max2 : std_logic_vector(7 downto 0) := x"12";
-	signal max3 : std_logic_vector(7 downto 0) := x"99";
 	signal ud1  : std_logic := '1';
 	signal ud2  : std_logic := '1';
 	signal ud3  : std_logic := '1';
@@ -94,6 +89,7 @@ architecture Behavioral of DatumModule is
 	signal tc1Cnten2 : std_logic := '0';
 	signal tc2Cnten3 : std_logic := '0';
 	signal weergave : std_logic := '0';
+	signal interne_count : std_logic_vector(23 downto 0) := x"000000";
 	
 begin
 	FSM : ModeFSM
@@ -110,15 +106,15 @@ begin
 				updwn3 => ud3,
 				ostate => ostate);
 	DC : DatumControl
-	Port map( count => count,
+	Port map( count => interne_count,
 				 maxDag => max1);			
 	Teller : Prg2digT3
-	Port map(min1=>min1,
-				min2=>min2,
-				min3=>min3,
+	Port map(min1=>x"00",
+				min2=>x"00",
+				min3=>x"15",
 				max1=>max1,
-				max2=>max2,
-				max3=>max3,
+				max2=>x"12",
+				max3=>x"99",
 				sysclk => sysclk,
 				cnten1 => (cnten and weergave) or en1,
 				updwn1 => ud1,
@@ -126,11 +122,11 @@ begin
 				updwn2 => ud2,
 				cnten3 => en3 or tc2Cnten3,
 				updwn3 => ud3,
-				count => count,
+				count => interne_count,
 				tc1 => tc1Cnten2,
 				tc2 => tc2Cnten3,
 				tc3 => tc);
 				
-
+ ocount <= interne_count;
 end Behavioral;
 
