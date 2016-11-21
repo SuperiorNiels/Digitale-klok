@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: 
--- Engineer: 
+-- Engineer: Dieter Balemans
 -- 
 -- Create Date:    10:56:54 11/16/2016 
 -- Design Name: 

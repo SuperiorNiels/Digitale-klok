@@ -52,7 +52,7 @@ BEGIN
 				elsif (Tcnt < Tmin) then Tcnt <= Tmin; 
 				end if;
 				if	updwn = '1' and cnten = '1' then												-- OPTELLEN					
-						if Tcnt = Tmax and  Ucnt = Umax then Tcnt <= Tmin;	  Ucnt <= Umin; 	
+						if Tcnt >= Tmax and  Ucnt >= Umax then Tcnt <= Tmin;	  Ucnt <= Umin; 	
 						elsif	Ucnt	= 9 then	Tcnt <= Tcnt + 1;Ucnt <= 0;
 						else  Ucnt	<= Ucnt + 1;														
 					end if;
