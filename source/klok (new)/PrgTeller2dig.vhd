@@ -48,8 +48,7 @@ BEGIN
 	CNT : process (sysclk)  
 		begin		
 			if rising_edge(sysclk) then
-				if (Ucnt < Umin) then Ucnt <= Umin; -- Initiele waarde
-				elsif (Tcnt < Tmin) then Tcnt <= Tmin; 
+				if (Ucnt = 0) and (Tcnt = 0) then Ucnt <= Umin; Tcnt <= Tmin;
 				end if;
 				if	updwn = '1' and cnten = '1' then												-- OPTELLEN					
 						if Tcnt >= Tmax and  Ucnt >= Umax then Tcnt <= Tmin;	  Ucnt <= Umin; 	

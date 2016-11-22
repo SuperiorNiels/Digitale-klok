@@ -66,9 +66,9 @@ architecture Behavioral of TijdModule is
 		end component;
 	
 	--Signals
-	constant min1 : std_logic_vector(7 downto 0) := x"01";
-	constant min2 : std_logic_vector(7 downto 0) := x"01";
-	constant min3 : std_logic_vector(7 downto 0) := x"01";
+	constant min1 : std_logic_vector(7 downto 0) := x"00";
+	constant min2 : std_logic_vector(7 downto 0) := x"00";
+	constant min3 : std_logic_vector(7 downto 0) := x"00";
 	constant max1 : std_logic_vector(7 downto 0) := x"59";
 	constant max2 : std_logic_vector(7 downto 0) := x"59";
 	constant max3 : std_logic_vector(7 downto 0) := x"23";
@@ -88,11 +88,11 @@ architecture Behavioral of TijdModule is
 	signal temp3: STD_LOGIC := '0';
 	
 begin
-	waardes : process(sysclk)
+	waardes : process(cnten,weergave,en1,en2,en3,tc1Cnten2,tc2Cnten3)
 	begin
 		temp1 <= (cnten and weergave) or en1;
-		temp2 <= en2 or tc1Cnten2;
-		temp3 <= en3 or tc2Cnten3;
+		temp2 <= en2 or (tc1Cnten2 and weergave);
+		temp3 <= en3 or (tc2Cnten3 and weergave);
 	end process;
 	
 	FSM : ModeFSM

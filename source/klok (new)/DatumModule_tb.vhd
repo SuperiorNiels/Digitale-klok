@@ -149,6 +149,9 @@ BEGIN
 		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
+		
+		mode <= '1'; wait for 10 ns;
+		mode <= '0'; wait for 100 ns;
 
 		wait for 100 ns;
       wait;

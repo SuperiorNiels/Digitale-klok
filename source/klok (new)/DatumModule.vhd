@@ -96,8 +96,18 @@ architecture Behavioral of DatumModule is
 	signal tc2Cnten3 : std_logic := '0';
 	signal weergave : std_logic := '0';
 	signal interne_count : std_logic_vector(23 downto 0) := x"000000";
+	signal temp1: STD_LOGIC := '0';
+	signal temp2: STD_LOGIC := '0';
+	signal temp3: STD_LOGIC := '0';
 	
 begin
+	waardes : process(cnten,weergave,en1,en2,en3,tc1Cnten2,tc2Cnten3)
+	begin
+		temp1 <= (cnten and weergave) or en1;
+		temp2 <= en2 or (tc1Cnten2 and weergave);
+		temp3 <= en3 or (tc2Cnten3 and weergave);
+	end process;
+
 	FSM : ModeFSM
 	Port map(sysclk => sysclk,
 				mode => mode,
@@ -122,11 +132,11 @@ begin
 				max2=>max2,
 				max3=>max3,
 				sysclk => sysclk,
-				cnten1 => (cnten and weergave) or en1,
+				cnten1 => temp1,
 				updwn1 => ud1,
-				cnten2 => en2 or (tc1Cnten2 and weergave),
+				cnten2 => temp2,
 				updwn2 => ud2,
-				cnten3 => en3 or (tc2Cnten3 and weergave),
+				cnten3 => temp3,
 				updwn3 => ud3,
 				count => interne_count,
 				tc1 => tc1Cnten2,
