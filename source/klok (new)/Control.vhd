@@ -35,7 +35,7 @@ entity Control is
            dig2 : in  STD_LOGIC_VECTOR (3 downto 0);
            dig3 : in  STD_LOGIC_VECTOR (3 downto 0);
            en : in  STD_LOGIC;
-           sysclk : in  STD_LOGIC;
+           refrclk : in  STD_LOGIC;
            bcdout : out  STD_LOGIC_VECTOR (3 downto 0);
            dignrout : out  STD_LOGIC_VECTOR (3 downto 0));
 end Control;
@@ -43,9 +43,9 @@ end Control;
 architecture Behavioral of Control is
 	signal dignr_int : integer range 0 to 3 := 0;
 begin
-	DIGNR: process (sysclk,en) 
+	DIGNR: process (refrclk,en) 
 		begin if en = '1' then 
-			if rising_edge(sysclk) then 
+			if rising_edge(refrclk) then 
 				if dignr_int = 3 then dignr_int <= 0; 
 				else dignr_int <= dignr_int + 1; 
 				end if; 

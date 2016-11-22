@@ -36,9 +36,8 @@ entity weergave4cijf is
            idig3 : in  STD_LOGIC_VECTOR (3 downto 0);
            cath : out  STD_LOGIC_VECTOR (6 downto 0);
            an : out  STD_LOGIC_VECTOR (3 downto 0);
-			  en : in STD_LOGIC;
-           --refrclk : in  STD_LOGIC;
-           sysclk : in  STD_LOGIC);
+           refrclk : in  STD_LOGIC);
+           --sysclk : in  STD_LOGIC);
 end weergave4cijf;
 
 architecture Behavioral of weergave4cijf is
@@ -48,7 +47,7 @@ architecture Behavioral of weergave4cijf is
            dig2 : in  STD_LOGIC_VECTOR (3 downto 0);
            dig3 : in  STD_LOGIC_VECTOR (3 downto 0);
            en : in  STD_LOGIC;
-           sysclk : in  STD_LOGIC;
+           refrclk : in  STD_LOGIC;
            bcdout : out  STD_LOGIC_VECTOR (3 downto 0);
            dignrout : out  STD_LOGIC_VECTOR (3 downto 0));
 	end component;
@@ -60,8 +59,8 @@ architecture Behavioral of weergave4cijf is
 	
 	signal bcdout_int : STD_LOGIC_VECTOR (3 downto 0);
 begin
-	C1: Control PORT MAP (sysclk=>sysclk,dig3=>idig3,dig2=>idig2,dig1=>idig1,dig0=>idig0,
-								bcdout=>bcdout_int,dignrout=>an,en=>en);
+	C1: Control PORT MAP (refrclk=>refrclk,dig3=>idig3,dig2=>idig2,dig1=>idig1,dig0=>idig0,
+								bcdout=>bcdout_int,dignrout=>an,en=>'1');
 	D1: BCD7segmDec PORT MAP (bcd=>bcdout_int,segm=>cath);
 
 end Behavioral;
