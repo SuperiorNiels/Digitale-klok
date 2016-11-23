@@ -58,9 +58,11 @@ architecture Behavioral of weergave4cijf is
 	end component;
 	
 	signal bcdout_int : STD_LOGIC_VECTOR (3 downto 0);
+	signal en : STD_LOGIC := '1';
 begin
-	C1: Control PORT MAP (refrclk=>refrclk,dig3=>idig3,dig2=>idig2,dig1=>idig1,dig0=>idig0,
-								bcdout=>bcdout_int,dignrout=>an,en=>'1');
+	C1:Control PORT MAP (refrclk=>refrclk,en=>en,
+								dig3=>idig3,dig2=>idig2,dig1=>idig1,dig0=>idig0,
+								bcdout=>bcdout_int,dignrout=>an);
 	D1: BCD7segmDec PORT MAP (bcd=>bcdout_int,segm=>cath);
 
 end Behavioral;

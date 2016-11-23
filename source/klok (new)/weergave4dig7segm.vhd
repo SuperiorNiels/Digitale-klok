@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    15:54:06 04/06/2016 
+-- Create Date:    16:49:20 03/08/2016 
 -- Design Name: 
--- Module Name:    Control - Behavioral 
+-- Module Name:    weergave4dig7segm - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,8 +29,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Control is
+entity weergave4dig7segm is
     Port ( dig0 : in  STD_LOGIC_VECTOR (3 downto 0);
+           dig1 : in  STD_LOGIC_VECTOR (3 downto 0);
+           dig2 : in  STD_LOGIC_VECTOR (3 downto 0);
+           dig3 : in  STD_LOGIC_VECTOR (3 downto 0);
+           sysclk : in  STD_LOGIC;
+			  en : in  STD_LOGIC;
+           cath : out  STD_LOGIC_VECTOR (6 downto 0);
+           an : out  STD_LOGIC_VECTOR (3 downto 0));
+end weergave4dig7segm;
+
+architecture Behavioral of weergave4dig7segm is
+	COMPONENT Control
+		Port ( dig0 : in  STD_LOGIC_VECTOR (3 downto 0);
            dig1 : in  STD_LOGIC_VECTOR (3 downto 0);
            dig2 : in  STD_LOGIC_VECTOR (3 downto 0);
            dig3 : in  STD_LOGIC_VECTOR (3 downto 0);
@@ -38,38 +50,17 @@ entity Control is
            sysclk : in  STD_LOGIC;
            bcdout : out  STD_LOGIC_VECTOR (3 downto 0);
            dignrout : out  STD_LOGIC_VECTOR (3 downto 0));
-end Control;
+	END COMPONENT;
 
-architecture Behavioral of Control is
-	signal dignr_int : integer range 0 to 3 := 0;
+	COMPONENT BCD7segmDec is
+		Port ( bcd : in  STD_LOGIC_VECTOR (3 downto 0);
+           segm : out  STD_LOGIC_VECTOR (6 downto 0));
+	END COMPONENT;
+	signal bcdout_int : STD_LOGIC_VECTOR (3 downto 0);
 begin
-	DIGNR: process (sysclk,en) 
-		begin if en = '1' then 
-			if rising_edge(sysclk) then 
-				if dignr_int = 3 then dignr_int <= 0; 
-				else dignr_int <= dignr_int + 1; 
-				end if; 
-			else null; 
-			end if; 
-		end if; 
-	end process; 
-	MUX: process (dignr_int,dig3,dig2,dig1,dig0) 
-		begin 
-		case dignr_int is 
-			when 0 => bcdout <= dig0; 
-			when 1 => bcdout <= dig1; 
-			when 2 => bcdout <= dig2; 
-			when 3 => bcdout <= dig3; 
-		end case; 
-	end process; 
-	DIGSELECT: process (dignr_int) 
-		begin 
-			case dignr_int is 
-				when 0 => dignrout <= "1110";
-				when 1 => dignrout <= "1101"; 
-				when 2 => dignrout <= "1011"; 
-				when 3 => dignrout <= "0111"; 
-end case; 
-end process;
-
+	C1:Control PORT MAP (sysclk=>sysclk,en=>en,
+								dig3=>dig3,dig2=>dig2,dig1=>dig1,dig0=>dig0,
+								bcdout=>bcdout_int,dignrout=>an);
+	D1:BCD7segmDec PORT MAP (bcd=>bcdout_int,segm=>cath);
 end Behavioral;
+
