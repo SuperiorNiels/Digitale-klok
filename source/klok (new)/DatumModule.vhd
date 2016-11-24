@@ -143,7 +143,7 @@ begin
 				count => interne_count,
 				tc1 => tc1Cnten2,
 				tc2 => tc2Cnten3,
-				tc3 => tc);
+				tc3 => '0');
 				
  --Uitgangssignaal count
  ocount <= interne_count;
