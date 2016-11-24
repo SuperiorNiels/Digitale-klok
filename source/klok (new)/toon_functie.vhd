@@ -73,6 +73,7 @@ begin
 						when "0010" => ostate <= "00000010";
 						when "0100" => ostate <= "00000100";
 						when "1000" => ostate <= "00001000";
+						when others => ostate <= "00000000";
 					end case;
 				when datum =>
 					odig(23 downto 0) <= idig2(23 downto 0);
@@ -81,6 +82,7 @@ begin
 						when "0010" => ostate <= "00100000";
 						when "0100" => ostate <= "01000000";
 						when "1000" => ostate <= "10000000";
+						when others => ostate <= "00000000";
 					end case;
 				when wekker =>
 					odig(23 downto 0) <= idig3(23 downto 0);
@@ -89,6 +91,7 @@ begin
 						when "0010" => ostate <= "00000010";
 						when "0100" => ostate <= "00000100";
 						when "1000" => ostate <= "00001000";
+						when others => ostate <= "00000000";
 					end case;
 			end case;
 		end if;

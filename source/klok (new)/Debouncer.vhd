@@ -32,19 +32,21 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity Debouncer is
     Port ( inp : in  STD_LOGIC;
            debclk : in  STD_LOGIC;
+			  sysclk : in STD_LOGIC;
            outp : out  STD_LOGIC);
 end Debouncer;
 
 architecture Behavioral of Debouncer is
 signal temp1, temp2, temp3 : STD_LOGIC := '0';
 begin
-	process(debclk)
+	process(sysclk)
 	begin
 		if rising_edge(sysclk) then
 		  if debclk = '1' then
 			temp1 <= inp;
 			temp2 <= temp1;
 			temp3 <= temp2;
+			end if;
 		end if;
 	end process;
 	outp <= temp1 and temp2 and temp3;

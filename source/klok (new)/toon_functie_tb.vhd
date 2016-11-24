@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   13:42:40 11/16/2016
+-- Create Date:   09:33:36 11/24/2016
 -- Design Name:   
 -- Module Name:   C:/GitHub/Digitale-klok/source/klok (new)/toon_functie_tb.vhd
 -- Project Name:  tellertest
@@ -41,6 +41,8 @@ ARCHITECTURE behavior OF toon_functie_tb IS
  
     COMPONENT toon_functie
     PORT(
+         sel : IN  std_logic;
+         sysclk : IN  std_logic;
          idig1 : IN  std_logic_vector(23 downto 0);
          idig2 : IN  std_logic_vector(23 downto 0);
          idig3 : IN  std_logic_vector(23 downto 0);
@@ -48,26 +50,24 @@ ARCHITECTURE behavior OF toon_functie_tb IS
          istate2 : IN  std_logic_vector(3 downto 0);
          istate3 : IN  std_logic_vector(3 downto 0);
          odig : OUT  std_logic_vector(23 downto 0);
-         ostate : OUT  std_logic_vector(3 downto 0);
-         sel : IN  std_logic;
-         sysclk : IN  std_logic
+         ostate : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
+   signal sel : std_logic := '0';
+   signal sysclk : std_logic := '0';
    signal idig1 : std_logic_vector(23 downto 0) := (others => '0');
    signal idig2 : std_logic_vector(23 downto 0) := (others => '0');
    signal idig3 : std_logic_vector(23 downto 0) := (others => '0');
    signal istate1 : std_logic_vector(3 downto 0) := (others => '0');
    signal istate2 : std_logic_vector(3 downto 0) := (others => '0');
    signal istate3 : std_logic_vector(3 downto 0) := (others => '0');
-   signal sel : std_logic := '0';
-   signal sysclk : std_logic := '0';
 
  	--Outputs
    signal odig : std_logic_vector(23 downto 0);
-   signal ostate : std_logic_vector(3 downto 0);
+   signal ostate : std_logic_vector(7 downto 0);
 
    -- Clock period definitions
    constant sysclk_period : time := 10 ns;
@@ -76,6 +76,8 @@ BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: toon_functie PORT MAP (
+          sel => sel,
+          sysclk => sysclk,
           idig1 => idig1,
           idig2 => idig2,
           idig3 => idig3,
@@ -83,9 +85,7 @@ BEGIN
           istate2 => istate2,
           istate3 => istate3,
           odig => odig,
-          ostate => ostate,
-          sel => sel,
-          sysclk => sysclk
+          ostate => ostate
         );
 
    -- Clock process definitions
@@ -103,32 +103,45 @@ BEGIN
    begin		
       -- hold reset state for 100 ns.
       wait for 100 ns;	
-
-      wait for sysclk_period*10;
-      -- insert stimulus here 
-		idig1 <= "110001011000101011110011";
-		idig2 <= "100100000001000110101011";
-		idig3 <= "000010110110010011000011";
-		istate1 <= "0101";
-		istate2 <= "1100";
-		istate3 <= "1010";
-		wait for 200 ns;
-		sel <= '1';
-		wait for 10 ns;
-		sel <= '0';
-		wait for 200 ns;
-		sel <= '1';
-		wait for 10 ns;
-		sel <= '0';
-		wait for 200 ns;
-		sel <= '1';
-		wait for 10 ns;
-		sel <= '0';
-		wait for 200 ns;
-		sel <= '1';
-		wait for 10 ns;
-		sel <= '0';
+		idig1 <= "001101001000010110011000";
+		idig2 <= "010001001110101011000110";
+		idig3 <= "011101011110000010000011";
+		istate1 <= "0001";
+		wait for 50 ns;
+		istate1 <= "0010";
+		wait for 50 ns;
+		istate1 <= "0100";
+		wait for 50 ns;
+		istate1 <= "1000";
 		
+		wait for 100 ns;
+		sel <= '1';
+		wait for 10 ns;
+		sel <= '0';
+		istate2 <= "0001";
+		wait for 50 ns;
+		istate2 <= "0010";
+		wait for 50 ns;
+		istate2 <= "0100";
+		wait for 50 ns;
+		istate2 <= "1000";
+		
+		
+		wait for 100 ns;
+		sel <= '1';
+		wait for 10 ns;
+		sel <= '0';
+		istate3 <= "0001";
+		wait for 50 ns;
+		istate3 <= "0010";
+		wait for 50 ns;
+		istate3 <= "0100";
+		wait for 50 ns;
+		istate3 <= "1000";
+      wait for sysclk_period*10;
+
+      -- insert stimulus here 
+
       wait;
    end process;
 

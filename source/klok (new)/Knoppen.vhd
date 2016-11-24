@@ -46,6 +46,7 @@ architecture Behavioral of Knoppen is
 Component Debouncer is
     Port ( inp : in  STD_LOGIC;
            debclk : in  STD_LOGIC;
+			  sysclk : in STD_LOGIC;
            outp : out  STD_LOGIC);
 end Component;
 Component one_pulse is
@@ -55,10 +56,10 @@ Component one_pulse is
 end Component;
 signal temp_out1, temp_out2, temp_out3, temp_out4 : STD_LOGIC := '0';
 begin
-	Deb1 : Debouncer Port map (inp=>btn1,debclk=>debclk,outp=>temp_out1);
-	Deb2 : Debouncer Port map (inp=>btn2,debclk=>debclk,outp=>temp_out2);
-	Deb3 : Debouncer Port map (inp=>btn3,debclk=>debclk,outp=>temp_out3);
-	Deb4 : Debouncer Port map (inp=>btn4,debclk=>debclk,outp=>temp_out4);
+	Deb1 : Debouncer Port map (inp=>btn1,debclk=>debclk,outp=>temp_out1,sysclk=>sysclk);
+	Deb2 : Debouncer Port map (inp=>btn2,debclk=>debclk,outp=>temp_out2,sysclk=>sysclk);
+	Deb3 : Debouncer Port map (inp=>btn3,debclk=>debclk,outp=>temp_out3,sysclk=>sysclk);
+	Deb4 : Debouncer Port map (inp=>btn4,debclk=>debclk,outp=>temp_out4,sysclk=>sysclk);
 	
 	O1 : one_pulse Port map (sysclk=>sysclk,inp=>temp_out1,outp=>out1);
 	O2 : one_pulse Port map (sysclk=>sysclk,inp=>temp_out2,outp=>out2);
