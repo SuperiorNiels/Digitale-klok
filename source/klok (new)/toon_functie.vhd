@@ -30,16 +30,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity toon_functie is
-    Port ( idig1 : in  STD_LOGIC_VECTOR (23 downto 0);
+    Port ( sel : in  STD_LOGIC;
+			  sysclk : in STD_LOGIC;
+			  idig1 : in  STD_LOGIC_VECTOR (23 downto 0);
            idig2 : in  STD_LOGIC_VECTOR (23 downto 0);
            idig3 : in  STD_LOGIC_VECTOR (23 downto 0);
            istate1 : in  STD_LOGIC_VECTOR (3 downto 0);
            istate2 : in  STD_LOGIC_VECTOR (3 downto 0);
            istate3 : in  STD_LOGIC_VECTOR (3 downto 0);
            odig : out  STD_LOGIC_VECTOR (23 downto 0);
-           ostate : out  STD_LOGIC_VECTOR (3 downto 0);
-           sel : in  STD_LOGIC;
-			  sysclk : in STD_LOGIC);
+           ostate : out  STD_LOGIC_VECTOR (7 downto 0));
 end toon_functie;
 
 architecture Behavioral of toon_functie is
@@ -68,13 +68,28 @@ begin
 			case present_state is
 				when tijd =>
 					odig(23 downto 0) <= idig1(23 downto 0);
-					ostate(3 downto 0) <= istate1(3 downto 0);
+					case istate1 is
+						when "0001" => ostate <= "00000001";
+						when "0010" => ostate <= "00000010";
+						when "0100" => ostate <= "00000100";
+						when "1000" => ostate <= "00001000";
+					end case;
 				when datum =>
 					odig(23 downto 0) <= idig2(23 downto 0);
-					ostate(3 downto 0) <= istate2(3 downto 0);
+					case istate2 is
+						when "0001" => ostate <= "00010000";
+						when "0010" => ostate <= "00100000";
+						when "0100" => ostate <= "01000000";
+						when "1000" => ostate <= "10000000";
+					end case;
 				when wekker =>
 					odig(23 downto 0) <= idig3(23 downto 0);
-					ostate(3 downto 0) <= istate3(3 downto 0);
+					case istate3 is
+						when "0001" => ostate <= "00000001";
+						when "0010" => ostate <= "00000010";
+						when "0100" => ostate <= "00000100";
+						when "1000" => ostate <= "00001000";
+					end case;
 			end case;
 		end if;
 	end process;
