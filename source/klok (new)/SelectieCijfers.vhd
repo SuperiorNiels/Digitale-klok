@@ -30,28 +30,37 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity SelectieCijfers is
-    Port ( idig : in  STD_LOGIC_VECTOR (23 downto 0);
-           istate : in  STD_LOGIC_VECTOR (3 downto 0);
+    Port ( sysclk : in STD_LOGIC;
+			  idig : in  STD_LOGIC_VECTOR (23 downto 0);
+           istate : in  STD_LOGIC_VECTOR (7 downto 0);
            odig1 : out  STD_LOGIC_VECTOR (3 downto 0);
-           odig2 : out  STD_LOGIC_VECTOR (7 downto 4);
-           odig3 : out  STD_LOGIC_VECTOR (11 downto 8);
-           odig4 : out  STD_LOGIC_VECTOR (15 downto 12));
+           odig2 : out  STD_LOGIC_VECTOR (3 downto 0);
+           odig3 : out  STD_LOGIC_VECTOR (3 downto 0);
+           odig4 : out  STD_LOGIC_VECTOR (3 downto 0));
 end SelectieCijfers;
 
 architecture Behavioral of SelectieCijfers is	
 begin
-SELCIJFER : process(istate,idig)
+	SELCIJFER:process(sysclk)
 	begin
-			if istate = "0001" or istate = "0010" or istate = "0100" then --Instellen UU, MM en weergave
-				odig1(3 downto 0) <= idig(11 downto 9);
-				odig2(7 downto 4) <= idig(15 downto 12);
-				odig3(11 downto 8) <= idig(19 downto 16);
-				odig4(15 downto 12) <= idig(23 downto 20);
-			elsif istate = "1000" then --Instellen SS 
-				odig1(3 downto 0) <= idig(3 downto 0);
-				odig2(7 downto 4) <= idig(7 downto 4);
-				odig3(11 downto 8) <= "0000";
-				odig4(15 downto 12) <= "0000";
+			if rising_edge(sysclk) then
+				case istate is
+					when "00000100" =>				 	--:SS
+						odig4 <= "0000";
+						odig3 <= "0000";
+						odig2 <= idig(7 downto 4);
+						odig1 <= idig(3 downto 0);
+					when "00100000" =>				 	--:JJ
+						odig4 <= "0000";
+						odig3 <= "0000";
+						odig2 <= idig(7 downto 4);
+						odig1 <= idig(3 downto 0);
+					when others => 						--UU:MM, DD:MM
+						odig4 <= idig(23 downto 20);
+						odig3 <= idig(19 downto 16);
+						odig2 <= idig(15 downto 12);
+						odig1 <= idig(11 downto 8);
+				end case;
 			end if;
 	end process;
 end Behavioral;
