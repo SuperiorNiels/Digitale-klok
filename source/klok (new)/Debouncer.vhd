@@ -40,7 +40,8 @@ signal temp1, temp2, temp3 : STD_LOGIC := '0';
 begin
 	process(debclk)
 	begin
-		if rising_edge(debclk) then
+		if rising_edge(sysclk) then
+		  if debclk = '1' then
 			temp1 <= inp;
 			temp2 <= temp1;
 			temp3 <= temp2;

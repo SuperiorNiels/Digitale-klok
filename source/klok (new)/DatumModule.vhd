@@ -74,6 +74,7 @@ architecture Behavioral of DatumModule is
 	end component;
 	Component DatumControl
 		Port ( count : in  STD_LOGIC_VECTOR (23 downto 0);
+			    sysclk : in STD_LOGIC;
              maxDag : out  STD_LOGIC_vector); -- max dag
 	end component;
 	
@@ -123,6 +124,7 @@ begin
 				ostate => ostate);
 	DC : DatumControl
 	Port map( count => interne_count,
+				 sysclk => sysclk,
 				 maxDag => max1);			
 	Teller : Prg2digT3
 	Port map(min1=>min1,
@@ -143,6 +145,8 @@ begin
 				tc2 => tc2Cnten3,
 				tc3 => tc);
 				
+ --Uitgangssignaal count
  ocount <= interne_count;
+
 end Behavioral;
 
