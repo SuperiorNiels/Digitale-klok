@@ -39,13 +39,17 @@ entity toon_functie is
            istate2 : in  STD_LOGIC_VECTOR (3 downto 0);
            istate3 : in  STD_LOGIC_VECTOR (3 downto 0);
            odig : out  STD_LOGIC_VECTOR (23 downto 0);
-           ostate : out  STD_LOGIC_VECTOR (7 downto 0));
+           ostate : out  STD_LOGIC_VECTOR (7 downto 0);
+			  led0 : out STD_LOGIC;
+			  led1 : out STD_LOGIC;
+			  led2 : out STD_LOGIC);
 end toon_functie;
 
 architecture Behavioral of toon_functie is
 type state is (tijd,datum,wekker);
 signal present_state : state;
 signal next_state : state;
+signal alarm_on : std_logic := '0';
 begin
 	STATE_REG: process(sysclk)
 	begin
@@ -69,32 +73,32 @@ begin
 				when tijd =>
 					odig(23 downto 0) <= idig1(23 downto 0);
 					case istate1 is
-						when "0001" => ostate <= "00000001";
-						when "0010" => ostate <= "00000010";
-						when "0100" => ostate <= "00000100";
-						when "1000" => ostate <= "00001000";
-						when others => ostate <= "00000000";
+						when "0001" => ostate <= "00000001"; led0 <= '1'; led1 <= '0'; led2 <= '0'; 
+						when "0010" => ostate <= "00000010"; led0 <= '0'; led1 <= '0'; led2 <= '0';
+						when "0100" => ostate <= "00000100"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
+						when "1000" => ostate <= "00001000"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
+						when others => ostate <= "00000000"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
 					end case;
 				when datum =>
 					odig(23 downto 0) <= idig2(23 downto 0);
 					case istate2 is
-						when "0001" => ostate <= "00010000";
-						when "0010" => ostate <= "00100000";
-						when "0100" => ostate <= "01000000";
-						when "1000" => ostate <= "10000000";
-						when others => ostate <= "00000000";
+						when "0001" => ostate <= "00010000"; led0 <= '0'; led1 <= '1'; led2 <= '0'; 
+						when "0010" => ostate <= "00100000"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
+						when "0100" => ostate <= "01000000"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
+						when "1000" => ostate <= "10000000"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
+						when others => ostate <= "00000000"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
 					end case;
 				when wekker =>
 					odig(23 downto 0) <= idig3(23 downto 0);
 					case istate3 is
-						when "0001" => ostate <= "00000001";
-						when "0010" => ostate <= "00000010";
-						when "0100" => ostate <= "00000100";
-						when "1000" => ostate <= "00001000";
-						when others => ostate <= "00000000";
+						when "0001" => ostate <= "00000001"; led0 <= '0'; led1 <= '0'; led2 <= '1'; 
+						when "0010" => ostate <= "00000010"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
+						when "0100" => ostate <= "00000100"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
+						when "1000" => ostate <= "00001000"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
+						when others => ostate <= "00000000"; led0 <= '0'; led1 <= '0'; led2 <= '0'; 
 					end case;
 			end case;
 		end if;
-	end process;
+	end process;	
 end Behavioral;
 
