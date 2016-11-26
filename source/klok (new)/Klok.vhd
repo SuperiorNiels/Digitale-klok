@@ -34,9 +34,12 @@ entity klok is
            btn2 : in  STD_LOGIC;
            btn3 : in  STD_LOGIC;
            btn4 : in  STD_LOGIC;
+			  btns : in  STD_LOGIC;
            sysclk : in  STD_LOGIC;
 			  cath : out STD_LOGIC_VECTOR(6 downto 0);
-			  an : out STD_LOGIC_VECTOR(3 downto 0));
+			  an : out STD_LOGIC_VECTOR(3 downto 0);
+			  led6 : out STD_LOGIC;
+			  led7 : out STD_LOGIC);
 end klok;
 
 architecture Behavioral of klok is
@@ -131,6 +134,15 @@ architecture Behavioral of klok is
 				  odig4 : out  STD_LOGIC_VECTOR (3 downto 0));
 	end component;
 	
+	component WekkerCheck
+			 Port ( sysclk : in STD_LOGIC;
+				  btns : in  STD_LOGIC;
+				  digTijd : in  STD_LOGIC_VECTOR (23 downto 0);
+				  digWekker : in  STD_LOGIC_VECTOR (23 downto 0);
+				  led6 : out  STD_LOGIC;
+				  led7 : out  STD_LOGIC);
+	end component;
+		
 	component weergave4dig7segm
 				Port ( dig0 : in  STD_LOGIC_VECTOR (3 downto 0);
 					  dig1 : in  STD_LOGIC_VECTOR (3 downto 0);
@@ -266,6 +278,14 @@ begin
 				odig2 => dig2_sign,
 				odig3 => dig3_sign,
 				odig4 => dig4_sign);
+				
+	WC : WekkerCheck
+	Port map(sysclk => sysclk,
+				btns => btns,
+				digTijd => tijd_count,
+				digWekker => wekker_count,
+				led6 => led6,
+				led7 => led7);
 				
 	Weergave : weergave4dig7segm
 	Port map(dig0 => dig1_sign,
