@@ -51,20 +51,20 @@ STATE_REG: process(sysclk)
 		end if;
 	end process;
 
-NXT_STATE : process(present_state,btns)
+NXT_STATE : process(present_state,btns,digTijd,digWekker)
 	begin
-	 case present_state is
-			when wekker_on => if btns <= '1' then next_state <= wekker_off; 
+		case present_state is
+			when wekker_on => if btns = '1' then next_state <= wekker_off; 
 									elsif digTijd = digWekker then next_state <= ringing; 
 									else next_state <= wekker_on; 
 									end if;
-			when wekker_off => if btns <= '1' then next_state <= wekker_on; 
+			when wekker_off => if btns = '1' then next_state <= wekker_on; 
 									 else next_state <= wekker_off; 
 									 end if;
-			when ringing => if btns <= '1' then next_state <= wekker_on;
+			when ringing => if btns = '1' then next_state <= wekker_on;
 								 else next_state <= ringing;
 								 end if;
-	 end case;
+		end case;
 	end process;
 	
 OUTPUTS : process(sysclk)

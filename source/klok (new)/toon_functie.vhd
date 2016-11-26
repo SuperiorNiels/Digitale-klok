@@ -49,7 +49,6 @@ architecture Behavioral of toon_functie is
 type state is (tijd,datum,wekker);
 signal present_state : state;
 signal next_state : state;
-signal alarm_on : std_logic := '0';
 begin
 	STATE_REG: process(sysclk)
 	begin

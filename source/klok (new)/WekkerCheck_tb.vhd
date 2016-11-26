@@ -89,8 +89,7 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 100 ns.
-      wait for 100 ns;	
+		wait for 100 ns;
 		digTijd <= x"125416";
 		digWekker <= x"125516";
 		btns <= '1'; wait for 10 ns; btns <= '0';
@@ -99,13 +98,10 @@ BEGIN
 		btns <= '1'; wait for 10 ns; btns <= '0';
 		wait for 100 ns;
 		btns <= '1'; wait for 10 ns; btns <= '0';
-		wait for 100 ns; digTijd <= x"125516";
+		wait for 100 ns; 
 		btns <= '1'; wait for 10 ns; btns <= '0';
-		wait for 100 ns;
-      wait for sysclk_period*10;
-
-      -- insert stimulus here 
-
+		wait for 100 ns;digTijd <= x"125516"; wait for 200 ns;
+		btns <= '1'; wait for 10 ns; btns <= '0';
       wait;
    end process;
 
