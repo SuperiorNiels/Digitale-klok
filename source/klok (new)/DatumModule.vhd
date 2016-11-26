@@ -36,8 +36,7 @@ entity DatumModule is
            incr : in  STD_LOGIC;
            decr : in  STD_LOGIC;
            ocount : out  STD_LOGIC_VECTOR (23 downto 0);
-           ostate : out  STD_LOGIC_VECTOR (3 downto 0);
-			  tc : out STD_LOGIC);
+           ostate : out  STD_LOGIC_VECTOR (3 downto 0));
 end DatumModule;
 
 architecture Behavioral of DatumModule is
@@ -142,8 +141,7 @@ begin
 				updwn3 => ud3,
 				count => interne_count,
 				tc1 => tc1Cnten2,
-				tc2 => tc2Cnten3,
-				tc3 => '0');
+				tc2 => tc2Cnten3);
 				
  --Uitgangssignaal count
  ocount <= interne_count;
