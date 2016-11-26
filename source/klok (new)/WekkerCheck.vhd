@@ -42,6 +42,7 @@ architecture Behavioral of WekkerCheck is
 type state is (wekker_on,wekker_off,ringing);
 signal present_state : state;
 signal next_state : state;
+signal ostate : std_logic_vector(1 downto 0) := "00";
 begin
 STATE_REG: process(sysclk)
 	begin
@@ -53,9 +54,16 @@ STATE_REG: process(sysclk)
 NXT_STATE : process(present_state,btns)
 	begin
 	 case present_state is
-			when wekker_on => if btns <= '1' then next_state <= wekker_off; else next_state <= wekker_on; end if;
-			when wekker_off => if btns <= '1' then next_state <= wekker_on; else next_state <= wekker_off; end if;
-			when ringing => if btns <= '1' then next_state <= wekker_on; else next_state <= ringing; end if;
+			when wekker_on => if btns <= '1' then next_state <= wekker_off; 
+									elsif digTijd = digWekker then next_state <= ringing; 
+									else next_state <= wekker_on; 
+									end if;
+			when wekker_off => if btns <= '1' then next_state <= wekker_on; 
+									 else next_state <= wekker_off; 
+									 end if;
+			when ringing => if btns <= '1' then next_state <= wekker_on;
+								 else next_state <= ringing;
+								 end if;
 	 end case;
 	end process;
 	
@@ -63,9 +71,9 @@ OUTPUTS : process(sysclk)
 	begin
 		if rising_edge(sysclk) then
 			case present_state is
-				when wekker_on => led6 <= '1'; led7 <= '0';
-				when wekker_off => led6 <= '0'; led7 <= '0';
-				when ringing => led6 <= '1'; led7 <= '1';
+				when wekker_on => led6 <= '1'; led7 <= '0'; ostate <= "00";
+				when wekker_off => led6 <= '0'; led7 <= '0'; ostate <= "01";
+				when ringing => led6 <= '1'; led7 <= '1'; ostate <= "11";
 			end case;
 		end if;
 	end process;
