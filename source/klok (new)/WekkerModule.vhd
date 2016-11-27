@@ -93,7 +93,7 @@ architecture Behavioral of WekkerModule is
 begin
 	FSM : ModeFSM
 	Port map(sysclk => sysclk,
-				mode => mode or skip_mode,
+				mode => mode,
 				incr => incr,
 				decr => decr,
 				oweergave => weergave,
@@ -122,14 +122,6 @@ begin
 				count => count,
 				tc1 => tc1Cnten2,
 				tc2 => tc2Cnten3);		
-SKIP_STATE : process(sysclk)
-	begin
-		if ostate_sign = "0001" then
-			skip_mode <= '1';
-		else skip_mode <= '0';
-		end if;
-	end process;
-
 ostate <= ostate_sign;
 end Behavioral;
 
