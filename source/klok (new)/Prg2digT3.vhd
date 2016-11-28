@@ -24,6 +24,7 @@ entity Prg2digT3 is
 	 
     Port ( min1,min2,min3 : in std_logic_vector(7 downto 0);
 			  max1,max2,max3 : in std_logic_vector(7 downto 0);
+			  reset1,reset2,reset3 : in std_logic;
 			  sysclk : in  STD_LOGIC;
            cnten1 : in  STD_LOGIC;
 			  cnten2 : in  STD_LOGIC;
@@ -41,6 +42,7 @@ architecture Behavioral of Prg2digT3 is
 	Component PrgTeller2dig		
 		port (cnten			:	in  std_logic;
 				updwn			:	in  std_logic := '1';
+				reset 		:  in  std_logic;
 				bcd_min		:	std_logic_vector(7 downto 0);
 				bcd_max		:	std_logic_vector(7 downto 0);
 				sysclk 		: 	in  std_logic;
@@ -56,6 +58,7 @@ begin
 		Port map(sysclk => sysclk,
 					cnten => cnten1,
 					updwn => updwn1,
+					reset => reset1,
 					bcd_min => min1,
 					bcd_max => max1,
 					bcd_cnt => count(7 downto 0),
@@ -66,6 +69,7 @@ begin
 		Port map(sysclk => sysclk,
 					cnten => cnten2,
 					updwn => updwn2,
+					reset => reset2,
 					bcd_min => min2,
 					bcd_max => max2,
 					bcd_cnt => count(15 downto 8),
@@ -76,6 +80,7 @@ begin
 		Port map(sysclk => sysclk,
 					cnten => cnten3,
 					updwn => updwn3,
+					reset => reset3,
 					bcd_min => min3,
 					bcd_max => max3,
 					bcd_cnt => count(23 downto 16),

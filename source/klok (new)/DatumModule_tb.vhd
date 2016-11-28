@@ -47,8 +47,7 @@ ARCHITECTURE behavior OF DatumModule_tb IS
          incr : IN  std_logic;
          decr : IN  std_logic;
          ocount : INOUT  std_logic_vector(23 downto 0);
-         ostate : OUT  std_logic_vector(3 downto 0);
-         tc : OUT  std_logic
+         ostate : OUT  std_logic_vector(3 downto 0)
         );
     END COMPONENT;
     
@@ -65,7 +64,6 @@ ARCHITECTURE behavior OF DatumModule_tb IS
 
  	--Outputs
    signal ostate : std_logic_vector(3 downto 0);
-   signal tc : std_logic;
 
    -- Clock period definitions
    constant sysclk_period : time := 10 ns;
@@ -80,8 +78,7 @@ BEGIN
           incr => incr,
           decr => decr,
           ocount => count,
-          ostate => ostate,
-          tc => tc
+          ostate => ostate
         );
 
    -- Clock process definitions
@@ -133,14 +130,14 @@ BEGIN
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
-		--mode <= '1'; wait for 10 ns;
-		--mode <= '0'; wait for 10 ns;
-		--mode <= '1'; wait for 10 ns;
-		--mode <= '0'; wait for 10 ns;
-		--mode <= '1'; wait for 10 ns;
-		--mode <= '0'; wait for 10 ns;
-		--incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
-		--incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		mode <= '1'; wait for 10 ns;
+		mode <= '0'; wait for 10 ns;
+		mode <= '1'; wait for 10 ns;
+		mode <= '0'; wait for 10 ns;
+		mode <= '1'; wait for 10 ns;
+		mode <= '0'; wait for 10 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
+		incr <= '1'; wait for 10 ns; incr <= '0'; wait for 100 ns;
 		wait for 100 ns;
 		-- Instellen state 4
 		mode <= '1'; wait for 10 ns;
@@ -150,6 +147,9 @@ BEGIN
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 		decr <= '1'; wait for 10 ns; decr <= '0'; wait for 100 ns;
 
+		mode <= '1'; wait for 10 ns;
+		mode <= '0'; wait for 100 ns; 
+		
 		wait for 100 ns;
       wait;
    end process;

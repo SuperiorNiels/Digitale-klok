@@ -25,6 +25,7 @@ entity PrgTeller2dig is
     port ( 	cnten			:	in  std_logic;
 				updwn			:	in  std_logic := '1';
 				sysclk 		: 	in  std_logic;
+				reset 		:  in  std_logic;
 				bcd_min		:	in std_logic_vector(7 downto 0);
 				bcd_max		:	in std_logic_vector(7 downto 0);
 				bcd_cnt		:	out std_logic_vector(7 downto 0);
@@ -46,11 +47,12 @@ BEGIN
 		Umax <= to_integer(unsigned(bcd_max(3 downto 0))) ;	
 		Tmax <= to_integer(unsigned(bcd_max(7 downto 4))) ;
 	CNT : process (sysclk)  
-		begin		
+		begin	
 			if rising_edge(sysclk) then
-				if (Ucnt = 0) and (Tcnt = 0) then Ucnt <= Umin; Tcnt <= Tmin;
+				if (Ucnt = 0) and (Tcnt = 0) then Ucnt <= Umin; Tcnt <= Tmin; --Initiële waarde
 				end if;
-				if	updwn = '1' and cnten = '1' then												-- OPTELLEN					
+				if (reset = '1') then Ucnt <= Umin; Tcnt <= Tmin; -- reset voor DD
+				elsif	updwn = '1' and cnten = '1' then												-- OPTELLEN					
 						if Tcnt >= Tmax and  Ucnt >= Umax then Tcnt <= Tmin;	  Ucnt <= Umin; 	
 						elsif	Ucnt	= 9 then	Tcnt <= Tcnt + 1;Ucnt <= 0;
 						else  Ucnt	<= Ucnt + 1;														

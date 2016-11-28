@@ -40,8 +40,9 @@ end WekkerModule;
 
 architecture Behavioral of WekkerModule is
 	Component Prg2digT3
-		Port(min1,min2,min3 : std_logic_vector(7 downto 0);
-			  max1,max2,max3 : std_logic_vector(7 downto 0);
+		Port(min1,min2,min3 : in std_logic_vector(7 downto 0);
+			  max1,max2,max3 : in std_logic_vector(7 downto 0);
+			  reset1,reset2,reset3 : in std_logic := '0';
 			  sysclk : in  STD_LOGIC;
            cnten1 : in  STD_LOGIC;
 			  cnten2 : in  STD_LOGIC;

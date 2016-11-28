@@ -44,6 +44,7 @@ ARCHITECTURE behavior OF PrgTeller2dig_TB IS
     PORT(
          cnten : IN  std_logic;
          updwn : IN  std_logic;
+			reset : IN  std_logic;
          bcd_min :  std_logic_vector(7 downto 0);
 			bcd_max :  std_logic_vector(7 downto 0);
          sysclk : IN  std_logic;
@@ -56,9 +57,10 @@ ARCHITECTURE behavior OF PrgTeller2dig_TB IS
    --Inputs
    signal cnten : std_logic := '0';
    signal updwn : std_logic := '0';
+	signal reset : std_logic := '0';
    signal sysclk : std_logic := '0';
    signal bcd_min : std_logic_vector(7 downto 0) := x"02";
-   signal bcd_max : std_logic_vector(7 downto 0) := x"05";
+   signal bcd_max : std_logic_vector(7 downto 0) := x"10";
 
  	--Outputs
    signal bcd_cnt : std_logic_vector(7 downto 0);
@@ -74,6 +76,7 @@ BEGIN
           cnten => cnten,
           updwn => updwn,
           sysclk => sysclk,
+			 reset => reset,
 			 bcd_min => bcd_min,
 			 bcd_max => bcd_max,
           bcd_cnt => bcd_cnt,
@@ -98,7 +101,7 @@ BEGIN
 		cnten <= '0'; updwn <= '1'; wait for 10 ns;
 		
 		cnten <= '1'; updwn <= '1'; wait for 200 ns;
-		
+		reset <= '1'; wait for 10 ns; reset <= '0';
 		cnten <= '1'; updwn <= '0'; wait for 200 ns;
 		
 		cnten <= '1'; updwn <= '1'; wait for 200 ns;
