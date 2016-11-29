@@ -34,6 +34,7 @@ entity WekkerModule is
            mode : in  STD_LOGIC;
            incr : in  STD_LOGIC;
            decr : in  STD_LOGIC;
+			  reset : in STD_LOGIC;
            count : out  STD_LOGIC_VECTOR (23 downto 0);
            ostate : out  STD_LOGIC_VECTOR (3 downto 0));
 end WekkerModule;
@@ -61,6 +62,7 @@ architecture Behavioral of WekkerModule is
 				mode : in  STD_LOGIC;
 				incr : in  STD_LOGIC;
 				decr : in  STD_LOGIC;
+				reset : in STD_LOGIC;
 				oweergave : out STD_LOGIC;
 				cnten1 : out STD_LOGIC;
 				updwn1 : out STD_LOGIC;
@@ -97,6 +99,7 @@ begin
 				mode => mode,
 				incr => incr,
 				decr => decr,
+				reset => reset,
 				oweergave => weergave,
 				cnten1 => en1,
 				updwn1 => ud1,

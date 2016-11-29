@@ -38,6 +38,9 @@ entity klok is
            sysclk : in  STD_LOGIC;
 			  cath : out STD_LOGIC_VECTOR(6 downto 0);
 			  an : out STD_LOGIC_VECTOR(3 downto 0);
+			  led0 : out STD_LOGIC;
+			  led1 : out STD_LOGIC;
+			  led2 : out STD_LOGIC;
 			  led6 : out STD_LOGIC;
 			  led7 : out STD_LOGIC);
 end klok;
@@ -56,12 +59,14 @@ architecture Behavioral of klok is
 				  btn2 : in  STD_LOGIC;
 				  btn3 : in  STD_LOGIC;
 				  btn4 : in  STD_LOGIC;
+				  btn5 : in  STD_LOGIC;
 				  sysclk : in  STD_LOGIC;
 				  debclk : in  STD_LOGIC;
 				  out1 : out  STD_LOGIC;
 				  out2 : out  STD_LOGIC;
 				  out3 : out  STD_LOGIC;
-				  out4 : out  STD_LOGIC);
+				  out4 : out  STD_LOGIC;
+				  out5 : out  STD_LOGIC);
 	end component;
 	
 	component Functie_select
@@ -76,6 +81,7 @@ architecture Behavioral of klok is
 				  datum_1 : out  STD_LOGIC;
 				  datum_2 : out  STD_LOGIC;
 				  datum_3 : out  STD_LOGIC;
+				  dis     : in   STD_LOGIC;
 				  wekker_1 : out  STD_LOGIC;
 				  wekker_2 : out  STD_LOGIC;
 				  wekker_3 : out  STD_LOGIC);
@@ -87,6 +93,7 @@ architecture Behavioral of klok is
 				  mode : in  STD_LOGIC;
 				  incr : in  STD_LOGIC;
 				  decr : in  STD_LOGIC;
+				  reset : in STD_LOGIC;
 				  count : out  STD_LOGIC_VECTOR (23 downto 0);
 				  ostate : out  STD_LOGIC_VECTOR (3 downto 0);
 				  tc : out STD_LOGIC);
@@ -98,6 +105,7 @@ architecture Behavioral of klok is
 					  mode : in  STD_LOGIC;
 					  incr : in  STD_LOGIC;
 					  decr : in  STD_LOGIC;
+					  reset : in STD_LOGIC;
 					  ocount : out  STD_LOGIC_VECTOR (23 downto 0);
 					  ostate : out  STD_LOGIC_VECTOR (3 downto 0));
 	end component;
@@ -107,6 +115,7 @@ architecture Behavioral of klok is
 					  mode : in  STD_LOGIC;
 					  incr : in  STD_LOGIC;
 					  decr : in  STD_LOGIC;
+					  reset : in STD_LOGIC;
 					  count : out  STD_LOGIC_VECTOR (23 downto 0);
 					  ostate : out  STD_LOGIC_VECTOR (3 downto 0));
 	end component;
@@ -121,7 +130,10 @@ architecture Behavioral of klok is
 					  istate2 : in  STD_LOGIC_VECTOR (3 downto 0);
 					  istate3 : in  STD_LOGIC_VECTOR (3 downto 0);
 					  odig : out  STD_LOGIC_VECTOR (23 downto 0);
-					  ostate : out  STD_LOGIC_VECTOR (7 downto 0));
+					  ostate : out  STD_LOGIC_VECTOR (7 downto 0);
+					  led0 : out STD_LOGIC;
+					  led1 : out STD_LOGIC;
+					  led2 : out STD_LOGIC);
 	end component;
 	
 	component SelectieCijfers
@@ -139,6 +151,7 @@ architecture Behavioral of klok is
 				  btns : in  STD_LOGIC;
 				  digTijd : in  STD_LOGIC_VECTOR (23 downto 0);
 				  digWekker : in  STD_LOGIC_VECTOR (23 downto 0);
+				  dis  : out STD_LOGIC;
 				  led6 : out  STD_LOGIC;
 				  led7 : out  STD_LOGIC);
 	end component;
@@ -164,6 +177,7 @@ architecture Behavioral of klok is
 	signal out2_sign : std_logic := '0';
 	signal out3_sign : std_logic := '0';
 	signal out4_sign : std_logic := '0';
+	signal outs_sign : std_logic := '0';
 	
 	signal tijd_mode : std_logic := '0';
 	signal tijd_incr : std_logic := '0';
@@ -174,6 +188,7 @@ architecture Behavioral of klok is
 	signal wekker_mode : std_logic := '0';
 	signal wekker_incr : std_logic := '0';
 	signal wekker_decr : std_logic := '0';
+	signal dis_sign    : std_logic := '0';
 	
 	signal tijd_count : std_logic_vector(23 downto 0) := x"000000";
 	signal tijd_state : std_logic_vector(3 downto 0) := "0000";
@@ -208,12 +223,14 @@ begin
 				btn2 => btn2,
 				btn3 => btn3,
 				btn4 => btn4,
+				btn5 => btns,
 				sysclk => sysclk,
 				debclk => pulse2_sign,
 				out1 => out1_sign,
 				out2 => out2_sign,
 				out3 => out3_sign,
-				out4 => out4_sign);
+				out4 => out4_sign,
+				out5 => outs_sign);
 				
 	FS : Functie_Select
 	Port map(in1 => out1_sign,
@@ -227,6 +244,7 @@ begin
 				datum_1 => datum_mode,
 				datum_2 => datum_incr,
 				datum_3 => datum_decr,
+				dis => dis_sign,
 				wekker_1 => wekker_mode,
 				wekker_2 => wekker_incr,
 				wekker_3 => wekker_decr);
@@ -237,6 +255,7 @@ begin
 				mode => tijd_mode,
 				incr => tijd_incr,
 				decr => tijd_decr,
+				reset => out4_sign,
 				count => tijd_count,
 				ostate => tijd_state,
 				tc => tijdTcDatum);
@@ -247,6 +266,7 @@ begin
 				mode => datum_mode,
 				incr => datum_incr,
 				decr => datum_decr,
+				reset => out4_sign,
 				ocount => datum_count,
 				ostate => datum_state);
 				
@@ -255,6 +275,7 @@ begin
 				mode => wekker_mode,
 				incr => wekker_incr,
 				decr => wekker_decr,
+				reset => out4_sign,
 				count => wekker_count,
 				ostate => wekker_state);
 				
@@ -268,7 +289,10 @@ begin
 				istate2 => datum_state,
 				istate3 => wekker_state,
 				odig => dig_sign,
-				ostate => state_sign);
+				ostate => state_sign,
+				led0 => led0,
+				led1 => led1,
+				led2 => led2);
 				
 	SC : SelectieCijfers
 	Port map(sysclk => sysclk,
@@ -281,9 +305,10 @@ begin
 				
 	WC : WekkerCheck
 	Port map(sysclk => sysclk,
-				btns => btns,
+				btns => outs_sign,
 				digTijd => tijd_count,
 				digWekker => wekker_count,
+				dis => dis_sign,
 				led6 => led6,
 				led7 => led7);
 				

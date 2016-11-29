@@ -104,9 +104,9 @@ BEGIN
       -- hold reset state for 100 ns.
       wait for 100 ns;	
 
-      wait for sysclk_period*10;
 
       -- insert stimulus here 
+		btn1 <= '1'; wait for 500 ns; btn1 <= '0';btns <= '1'; wait for 500 ns; btns <= '0';
 
       wait;
    end process;

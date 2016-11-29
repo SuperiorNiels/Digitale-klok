@@ -41,6 +41,7 @@ entity Functie_select is
            datum_1 : out  STD_LOGIC;
            datum_2 : out  STD_LOGIC;
            datum_3 : out  STD_LOGIC;
+			  dis 	 : in   STD_LOGIC;
 			  wekker_1 : out  STD_LOGIC;
            wekker_2 : out  STD_LOGIC;
            wekker_3 : out  STD_LOGIC);
@@ -92,15 +93,27 @@ begin
 					tijd_2 <= '0';
 					tijd_3 <= '0';
 				when wekker =>
-					wekker_1 <= in1;
-					wekker_2 <= in2;
-					wekker_3 <= in3;
-					datum_1 <= '0';
-					datum_2 <= '0';
-					datum_3 <= '0';
-					tijd_1 <= '0';
-					tijd_2 <= '0';
-					tijd_3 <= '0';
+					if dis = '0' then
+						wekker_1 <= in1;
+						wekker_2 <= in2;
+						wekker_3 <= in3;
+						datum_1 <= '0';
+						datum_2 <= '0';
+						datum_3 <= '0';
+						tijd_1 <= '0';
+						tijd_2 <= '0';
+						tijd_3 <= '0';
+					else 
+						wekker_1 <= '0';
+						wekker_2 <= '0';
+						wekker_3 <= '0';
+						datum_1 <= '0';
+						datum_2 <= '0';
+						datum_3 <= '0';
+						tijd_1 <= '0';
+						tijd_2 <= '0';
+						tijd_3 <= '0';
+					end if;
 			end case;
 		end if;
 	end process;

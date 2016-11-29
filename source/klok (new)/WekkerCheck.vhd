@@ -34,6 +34,7 @@ entity WekkerCheck is
 			  btns : in  STD_LOGIC;
            digTijd : in  STD_LOGIC_VECTOR (23 downto 0);
            digWekker : in  STD_LOGIC_VECTOR (23 downto 0);
+			  dis  : out STD_LOGIC;
            led6 : out  STD_LOGIC;
            led7 : out  STD_LOGIC);
 end WekkerCheck;
@@ -42,7 +43,6 @@ architecture Behavioral of WekkerCheck is
 type state is (wekker_on,wekker_off,ringing);
 signal present_state : state;
 signal next_state : state;
-signal ostate : std_logic_vector(1 downto 0) := "00";
 begin
 STATE_REG: process(sysclk)
 	begin
@@ -71,9 +71,9 @@ OUTPUTS : process(sysclk)
 	begin
 		if rising_edge(sysclk) then
 			case present_state is
-				when wekker_on => led6 <= '1'; led7 <= '0'; ostate <= "00";
-				when wekker_off => led6 <= '0'; led7 <= '0'; ostate <= "01";
-				when ringing => led6 <= '1'; led7 <= '1'; ostate <= "11";
+				when wekker_on => led6 <= '1'; led7 <= '0'; dis <= '0';
+				when wekker_off => led6 <= '0'; led7 <= '0'; dis <= '0';
+				when ringing => led6 <= '1'; led7 <= '1'; dis <= '1';
 			end case;
 		end if;
 	end process;

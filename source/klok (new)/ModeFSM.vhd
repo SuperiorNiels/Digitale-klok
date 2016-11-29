@@ -26,6 +26,7 @@ entity ModeFSM is
            mode : in  STD_LOGIC;
            incr : in  STD_LOGIC;
            decr : in  STD_LOGIC;
+			  reset : in STD_LOGIC;
 			  oweergave : out STD_LOGIC;
 			  cnten1 : out STD_LOGIC;
 			  updwn1 : out STD_LOGIC;
@@ -49,12 +50,15 @@ begin
 	
 	NXT_STATE : process (present_state, mode)
 	begin
+	if reset = '1' then next_state <= weergave;
+	else
 		case present_state is
 			when weergave => if mode = '1' then next_state <= InstellenUU; else next_state <= weergave; end if;
 			when InstellenUU => if mode = '1' then next_state <= InstellenMM; else next_state <= InstellenUU; end if;	
 			when InstellenMM => if mode = '1' then next_state <= InstellenSS; else next_state <= InstellenMM; end if;
 			when InstellenSS => if mode = '1' then next_state <= weergave; else next_state <= InstellenSS; end if;
 		end case;
+	end if;
 	end process;
 	
 	OUTPUTS : process(sysclk,present_state)
