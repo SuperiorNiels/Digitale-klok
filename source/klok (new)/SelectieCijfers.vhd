@@ -45,17 +45,32 @@ begin
 	begin
 			if rising_edge(sysclk) then
 				case istate is
-					when "00000100" =>				 	--:SS
-						odig4 <= "0000";
-						odig3 <= "0000";
+					when "00001000" =>				 	--:SS
+						odig4 <= "1111";
+						odig3 <= "1111";
 						odig2 <= idig(7 downto 4);
 						odig1 <= idig(3 downto 0);
 					when "00100000" =>				 	--:JJ
-						odig4 <= "0000";
-						odig3 <= "0000";
-						odig2 <= idig(7 downto 4);
-						odig1 <= idig(3 downto 0);
-					when others => 						--UU:MM, DD:MM
+						odig4 <= "1111";
+						odig3 <= "1111";
+						odig2 <= idig(23 downto 20);
+						odig1 <= idig(19 downto 16);
+					when "00010000" => 				 --DD:MM
+						odig4 <= idig(7 downto 4);
+						odig3 <= idig(3 downto 0);
+						odig2 <= idig(15 downto 12);
+						odig1 <= idig(11 downto 8);
+					when "01000000" => 				 --DD:MM
+						odig4 <= idig(7 downto 4);
+						odig3 <= idig(3 downto 0);
+						odig2 <= idig(15 downto 12);
+						odig1 <= idig(11 downto 8);
+					when "10000000" => 				 --DD:MM
+						odig4 <= idig(7 downto 4);
+						odig3 <= idig(3 downto 0);
+						odig2 <= idig(15 downto 12);
+						odig1 <= idig(11 downto 8);
+					when others => 					 --UU:MM						
 						odig4 <= idig(23 downto 20);
 						odig3 <= idig(19 downto 16);
 						odig2 <= idig(15 downto 12);

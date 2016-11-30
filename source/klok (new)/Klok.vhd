@@ -320,7 +320,7 @@ begin
 				dig2 => dig3_sign,
 				dig3 => dig4_sign,
 			   sysclk => sysclk,
-				en => '1',
+				en => pulse1_sign,
 				cath => cath,
 				an => an);
 				
