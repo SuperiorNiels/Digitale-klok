@@ -54,7 +54,8 @@ ARCHITECTURE behavior OF Functie_select_tb IS
          datum_3 : OUT  std_logic;
          wekker_1 : OUT  std_logic;
          wekker_2 : OUT  std_logic;
-         wekker_3 : OUT  std_logic
+         wekker_3 : OUT  std_logic;
+			dis      : in  std_logic
         );
     END COMPONENT;
     
@@ -65,6 +66,7 @@ ARCHITECTURE behavior OF Functie_select_tb IS
    signal in3 : std_logic := '0';
    signal in4 : std_logic := '0';
    signal sysclk : std_logic := '0';
+	signal dis : std_logic := '0';
 
  	--Outputs
    signal tijd_1 : std_logic;
@@ -97,7 +99,8 @@ BEGIN
           datum_3 => datum_3,
           wekker_1 => wekker_1,
           wekker_2 => wekker_2,
-          wekker_3 => wekker_3
+          wekker_3 => wekker_3,
+			 dis => dis
         );
 
    -- Clock process definitions
@@ -144,7 +147,7 @@ BEGIN
 		wait for 10 ns;
 		in3 <= '0';
 		wait for 100 ns;
-		
+		dis <= '1';
 		in4 <= '1';
 		wait for 10 ns;
 		in4 <= '0';
@@ -160,7 +163,7 @@ BEGIN
 		wait for 10 ns;
 		in3 <= '0';
 		wait for 100 ns;
-		
+		dis <= '0';
 		in4 <= '1';
 		wait for 10 ns;
 		in4 <= '0';

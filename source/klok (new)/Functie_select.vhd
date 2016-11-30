@@ -61,11 +61,14 @@ begin
 	
 	NXT_STATE: process(present_state,in4)
 	begin
+	if dis = '0' then
 		case present_state is
 			when tijd => if in4 = '1' then next_state <= datum; else next_state <= tijd; end if;
 			when datum => if in4 = '1' then next_state <= wekker; else next_state <= datum; end if;
-			when wekker => if in4 = '1' then next_state <= tijd; else next_state <= wekker; end if;
+			when wekker => if in4 = '1' then next_state <= tijd; else next_state <= wekker; end if;	
 		end case;
+		else next_state <= present_state;
+		end if;
 	end process;
 	
 	OUTPUTS: process(sysclk)
@@ -73,25 +76,49 @@ begin
 		if rising_edge(sysclk) then
 			case present_state is
 				when tijd =>
-					tijd_1 <= in1;
-					tijd_2 <= in2;
-					tijd_3 <= in3;
-					datum_1 <= '0';
-					datum_2 <= '0';
-					datum_3 <= '0';
-					wekker_1 <= '0';
-					wekker_2 <= '0';
-					wekker_3 <= '0';
+					if dis = '0' then
+						tijd_1 <= in1;
+						tijd_2 <= in2;
+						tijd_3 <= in3;
+						datum_1 <= '0';
+						datum_2 <= '0';
+						datum_3 <= '0';
+						wekker_1 <= '0';
+						wekker_2 <= '0';
+						wekker_3 <= '0';
+					else
+						tijd_1 <= '0';
+						tijd_2 <= '0';
+						tijd_3 <= '0';
+						datum_1 <= '0';
+						datum_2 <= '0';
+						datum_3 <= '0';
+						wekker_1 <= '0';
+						wekker_2 <= '0';
+						wekker_3 <= '0';
+					end if;
 				when datum =>
-					datum_1 <= in1;
-					datum_2 <= in2;
-					datum_3 <= in3;
-					wekker_1 <= '0';
-					wekker_2 <= '0';
-					wekker_3 <= '0';
-					tijd_1 <= '0';
-					tijd_2 <= '0';
-					tijd_3 <= '0';
+					if dis = '0' then
+						datum_1 <= in1;
+						datum_2 <= in2;
+						datum_3 <= in3;
+						wekker_1 <= '0';
+						wekker_2 <= '0';
+						wekker_3 <= '0';
+						tijd_1 <= '0';
+						tijd_2 <= '0';
+						tijd_3 <= '0';
+					else 
+						datum_1 <= '0';
+						datum_2 <= '0';
+						datum_3 <= '0';
+						wekker_1 <= '0';
+						wekker_2 <= '0';
+						wekker_3 <= '0';
+						tijd_1 <= '0';
+						tijd_2 <= '0';
+						tijd_3 <= '0';
+					end if;
 				when wekker =>
 					if dis = '0' then
 						wekker_1 <= in1;

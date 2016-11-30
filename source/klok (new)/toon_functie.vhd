@@ -32,6 +32,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity toon_functie is
     Port ( sel : in  STD_LOGIC;
 			  sysclk : in STD_LOGIC;
+			  dis   : in STD_LOGIC;
 			  idig1 : in  STD_LOGIC_VECTOR (23 downto 0);
            idig2 : in  STD_LOGIC_VECTOR (23 downto 0);
            idig3 : in  STD_LOGIC_VECTOR (23 downto 0);
@@ -59,11 +60,14 @@ begin
 	
 	NXT_STATE: process(present_state,sel)
 	begin
+	if dis = '0' then 
 		case present_state is
 			when tijd => if sel = '1' then next_state <= datum; else next_state <= tijd; end if;
 			when datum => if sel = '1' then next_state <= wekker; else next_state <= datum; end if;
 			when wekker => if sel = '1' then next_state <= tijd; else next_state <= wekker; end if;
 		end case;
+	else next_state <= present_state;
+	end if;
 	end process;
 	OUTPUTS: process(sysclk)
 	begin
