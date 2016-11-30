@@ -123,7 +123,7 @@ architecture Behavioral of klok is
 	component toon_functie
 			Port (  sel : in  STD_LOGIC;
 					  sysclk : in STD_LOGIC;
-					  dis   : in STD_LOGIC;
+					  dis : in STD_LOGIC;
 					  idig1 : in  STD_LOGIC_VECTOR (23 downto 0);
 					  idig2 : in  STD_LOGIC_VECTOR (23 downto 0);
 					  idig3 : in  STD_LOGIC_VECTOR (23 downto 0);
