@@ -139,6 +139,7 @@ architecture Behavioral of klok is
 	
 	component SelectieCijfers
 			 Port ( sysclk : in STD_LOGIC;
+				  blkclk : in STD_LOGIC;
 				  idig : in  STD_LOGIC_VECTOR (23 downto 0);
 				  istate : in  STD_LOGIC_VECTOR (7 downto 0);
 				  odig1 : out  STD_LOGIC_VECTOR (3 downto 0);
@@ -298,6 +299,7 @@ begin
 				
 	SC : SelectieCijfers
 	Port map(sysclk => sysclk,
+				blkclk => pulse3_sign,
 				idig => dig_sign,
 				istate => state_sign,
 				odig1 => dig1_sign,

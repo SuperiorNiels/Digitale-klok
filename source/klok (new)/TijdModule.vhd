@@ -93,9 +93,9 @@ architecture Behavioral of TijdModule is
 begin
 	waardes : process(cnten,weergave,en1,en2,en3,tc1Cnten2,tc2Cnten3)
 	begin
-		temp1 <= (cnten and weergave) or en1;
-		temp2 <= en2 or (tc1Cnten2 and weergave);
-		temp3 <= en3 or (tc2Cnten3 and weergave);
+		temp1 <= (cnten and weergave) or en1;-- Cnten voor SS
+		temp2 <= en2 or (tc1Cnten2 and weergave);--Cnten voor MM
+		temp3 <= en3 or (tc2Cnten3 and weergave);--Cnten voor UU
 	end process;
 	
 	FSM : ModeFSM

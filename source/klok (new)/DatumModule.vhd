@@ -102,13 +102,14 @@ architecture Behavioral of DatumModule is
 	signal temp1: STD_LOGIC := '0';
 	signal temp2: STD_LOGIC := '0';
 	signal temp3: STD_LOGIC := '0';
-	
+	signal temp4 : std_logic := '0';	
 begin
 	waardes : process(cnten,weergave,en1,en2,en3,tc1Cnten2,tc2Cnten3)
 	begin
-		temp1 <= (cnten and weergave) or en1;
-		temp2 <= en2 or (tc1Cnten2 and weergave);
-		temp3 <= en3 or (tc2Cnten3 and weergave);
+		temp1 <= (cnten and weergave) or en1; --Cnten voor DD
+		temp2 <= en2 or (tc1Cnten2 and weergave); --Cnten voor MM
+		temp3 <= en3 or (tc2Cnten3 and weergave); --Cnten voor JJ
+		temp4 <= en2 or en3; -- DD reset voor instellen
 	end process;
 
 	FSM : ModeFSM
@@ -136,7 +137,7 @@ begin
 				max1=>max1,
 				max2=>max2,
 				max3=>max3,
-				reset1 => en2,
+				reset1 => temp4,
 				sysclk => sysclk,
 				cnten1 => temp1,
 				updwn1 => ud1,
