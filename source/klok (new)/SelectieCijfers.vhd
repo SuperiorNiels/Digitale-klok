@@ -114,10 +114,10 @@ begin
 							odig2 <= idig(15 downto 12);
 							odig1 <= idig(11 downto 8);
 						else
-							odig4 <= "1111";
-							odig3 <= "1111";
-							odig2 <= idig(15 downto 12);
-							odig1 <= idig(11 downto 8);
+							odig4 <= idig(7 downto 4);
+							odig3 <= idig(3 downto 0);
+							odig2 <= "1111";
+							odig1 <= "1111";
 						end if;
 					when "10000000" => 				 --DD:MM knipperen dagen
 						if knipperen = '1' then
@@ -126,10 +126,10 @@ begin
 							odig2 <= idig(15 downto 12);
 							odig1 <= idig(11 downto 8);
 						else
-							odig4 <= idig(7 downto 4);
-							odig3 <= idig(3 downto 0);
-							odig2 <= "1111";
-							odig1 <= "1111";
+							odig4 <= "1111";
+							odig3 <= "1111";
+							odig2 <= idig(15 downto 12);
+							odig1 <= idig(11 downto 8);
 						end if;
 					when "00010000" => 				 --DD:MM
 						odig4 <= idig(7 downto 4);
