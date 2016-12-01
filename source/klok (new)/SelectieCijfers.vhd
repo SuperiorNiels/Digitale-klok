@@ -31,6 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity SelectieCijfers is
     Port ( sysclk : in STD_LOGIC;
+			  blkclk : in STD_LOGIC;	
 			  idig : in  STD_LOGIC_VECTOR (23 downto 0);
            istate : in  STD_LOGIC_VECTOR (7 downto 0);
            odig1 : out  STD_LOGIC_VECTOR (3 downto 0);
@@ -45,17 +46,46 @@ begin
 	begin
 			if rising_edge(sysclk) then
 				case istate is
-					when "00000100" =>				 	--:SS
-						odig4 <= "0000";
-						odig3 <= "0000";
-						odig2 <= idig(7 downto 4);
-						odig1 <= idig(3 downto 0);
-					when "00100000" =>				 	--:JJ
-						odig4 <= "0000";
-						odig3 <= "0000";
-						odig2 <= idig(7 downto 4);
-						odig1 <= idig(3 downto 0);
-					when others => 						--UU:MM, DD:MM
+					when "00001000" =>
+						if blkclk = '1' then        --:SS
+							odig4 <= "1110";
+							odig3 <= "1110";
+							odig2 <= idig(7 downto 4);
+							odig1 <= idig(3 downto 0);
+						else
+							odig4 <= "1111";
+							odig3 <= "1111";
+							odig2 <= "1111";
+							odig1 <= "1111";
+						end if;
+					when "00100000" =>
+						if blkclk = '1' then			 --:JJ
+							odig4 <= "1110";
+							odig3 <= "1110";
+							odig2 <= idig(23 downto 20);
+							odig1 <= idig(19 downto 16);
+						else
+							odig4 <= "1111";
+							odig3 <= "1111";
+							odig2 <= "1111";
+							odig1 <= "1111";
+						end if;
+					when "00010000" => 				 --DD:MM
+						odig4 <= idig(7 downto 4);
+						odig3 <= idig(3 downto 0);
+						odig2 <= idig(15 downto 12);
+						odig1 <= idig(11 downto 8);
+					when "01000000" => 				 --DD:MM
+						odig4 <= idig(7 downto 4);
+						odig3 <= idig(3 downto 0);
+						odig2 <= idig(15 downto 12);
+						odig1 <= idig(11 downto 8);
+					when "10000000" => 				 --DD:MM
+						odig4 <= idig(7 downto 4);
+						odig3 <= idig(3 downto 0);
+						odig2 <= idig(15 downto 12);
+						odig1 <= idig(11 downto 8);
+					when others => 					 --UU:MM						
 						odig4 <= idig(23 downto 20);
 						odig3 <= idig(19 downto 16);
 						odig2 <= idig(15 downto 12);
@@ -64,4 +94,3 @@ begin
 			end if;
 	end process;
 end Behavioral;
-

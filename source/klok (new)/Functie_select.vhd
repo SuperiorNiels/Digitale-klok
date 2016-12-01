@@ -52,7 +52,7 @@ type state is (tijd,datum,wekker);
 signal present_state : state;
 signal next_state : state;
 begin
-	STATE_REG: process(sysclk)
+	STATE_REG: process(sysclk,dis)
 	begin
 		if rising_edge(sysclk) then
 			present_state <= next_state;
