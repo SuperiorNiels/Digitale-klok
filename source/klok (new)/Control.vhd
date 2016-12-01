@@ -42,7 +42,7 @@ end Control;
 
 architecture Behavioral of Control is
 	signal dignr_int : integer range 0 to 3 := 0;
-begin
+begin		
 	DIGNR: process (sysclk,en) 
 		begin if en = '1' then 
 			if rising_edge(sysclk) then 
