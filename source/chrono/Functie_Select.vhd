@@ -38,18 +38,62 @@ entity Functie_Select is
            s1 : in  STD_LOGIC;
            s2 : in  STD_LOGIC;
            sysclk : in  STD_LOGIC;
-           o1 : out  STD_LOGIC;
-           o2 : out  STD_LOGIC;
-           o3 : out  STD_LOGIC;
-           o4 : out  STD_LOGIC;
-           o5 : out  STD_LOGIC;
+           klok_1 : out  STD_LOGIC;
+           klok_2 : out  STD_LOGIC;
+           klok_3 : out  STD_LOGIC;
+           klok_4 : out  STD_LOGIC;
+           klok_5 : out  STD_LOGIC;
+			  chrono_1 : out  STD_LOGIC;
+           chrono_2 : out  STD_LOGIC;
+           chrono_3 : out  STD_LOGIC;
+           chrono_4 : out  STD_LOGIC;
+           chrono_5 : out  STD_LOGIC;
            os2 : out  STD_LOGIC);
 end Functie_Select;
 
 architecture Behavioral of Functie_Select is
-
 begin
-
-
+	OUTPUTS: process(sysclk)
+	begin
+		if rising_edge(sysclk) then
+			case s1 is
+					when '0' =>
+						klok_1 <= in1;
+						klok_2 <= in2;
+						klok_3 <= in3;
+						klok_4 <= in4;
+						klok_5 <= in5;
+						chrono_1 <= '0';
+						chrono_2 <= '0';
+						chrono_3 <= '0';
+						chrono_4 <= '0';
+						chrono_5 <= '0';
+						os2 <= '0';
+					when '1' =>
+						chrono_1 <= in1;
+						chrono_2 <= in2;
+						chrono_3 <= in3;
+						chrono_4 <= in4;
+						chrono_5 <= in5;
+						klok_1 <= '0';
+						klok_2 <= '0';
+						klok_3 <= '0';
+						klok_4 <= '0';
+						klok_5 <= '0';
+						os2 <= s2;
+					when others =>
+						klok_1 <= '0';
+						klok_2 <= '0';
+						klok_3 <= '0';
+						klok_4 <= '0';
+						klok_5 <= '0';
+						chrono_1 <= '0';
+						chrono_2 <= '0';
+						chrono_3 <= '0';
+						chrono_4 <= '0';
+						chrono_5 <= '0';
+						os2 <= '0';
+			end case;
+		end if;
+	end process;
 end Behavioral;
-
