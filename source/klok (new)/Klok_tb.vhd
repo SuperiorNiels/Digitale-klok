@@ -106,8 +106,28 @@ BEGIN
 
 
       -- insert stimulus here 
-		btn1 <= '1'; wait for 500 ns; btn1 <= '0';btns <= '1'; wait for 500 ns; btns <= '0';
-
+		btns <= '1'; wait for 500 ns; btns <= '0'; --change mode of Tijd to instellenUU
+		btn1 <= '1'; wait for 500 ns; btn1 <= '0';
+		wait for 1000 ns;
+		btn1 <= '1'; wait for 500 ns; btn1 <= '0'; -- InstellenMM
+		btn2 <= '1'; wait for 500 ns; btn2 <= '0';
+		btn2 <= '1'; wait for 500 ns; btn2 <= '0';
+		btn2 <= '1'; wait for 500 ns; btn2 <= '0'; -- incr tot 3
+		btn3 <= '1'; wait for 500 ns; btn3 <= '0'; --decr tot 2
+		
+		btn1 <= '1'; wait for 500 ns; btn1 <= '0'; --InstellenSS
+		wait for 500 ns;
+		btn1 <= '1'; wait for 500 ns; btn1 <= '0'; -- weergave
+		
+		btn4 <= '1'; wait for 500 ns; btn4 <= '0'; -- datum
+		wait for 500 ns;
+		btn4 <= '1'; wait for 500 ns; btn4 <= '0'; --wekker
+		btn1 <= '1'; wait for 500 ns; btn1 <= '0'; -- InstellenMM
+		btn2 <= '1'; wait for 500 ns; btn2 <= '0';
+		btn2 <= '1'; wait for 500 ns; btn2 <= '0';
+		btn2 <= '1'; wait for 500 ns; btn2 <= '0'; -- incr tot 3
+		btn3 <= '1'; wait for 500 ns; btn3 <= '0'; --decr tot 2
+		
       wait;
    end process;
 

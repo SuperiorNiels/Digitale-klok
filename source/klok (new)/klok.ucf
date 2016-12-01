@@ -1,0 +1,27 @@
+##Clock signal
+Net "sysclk" LOC=V10	; 		# systeemklok 100 MHz (10 ns)
+## Buttons
+Net "btns" LOC = B8 ;	# BTNS	
+Net "btn2" LOC = A8 ;	# BTNU
+Net "btn4" LOC = C4 ;	# BTNL
+Net "btn3" LOC = C9 ;	# BTND
+Net "btn1" LOC = D9 ;	# BTNr
+## Leds
+Net "led0" LOC = U16 ;	# LD0	(uiterst rechtse led)
+Net "led1" LOC = V16 ;	# LD1
+Net "led2" LOC = U15 ;	# LD2
+Net "led6" LOC = R11 ;	# LD6
+Net "led7" LOC = T11 ;	# LD7	(uiterst linkse led)
+## 7 segment display
+Net "cath<0>" LOC = T17 ;	# CA
+Net "cath<1>" LOC = T18 ;	# CB
+Net "cath<2>" LOC = U17 ;	# CC
+Net "cath<3>" LOC = U18 ;	# CD
+Net "cath<4>" LOC = M14 ;	# CE
+Net "cath<5>" LOC = N14 ; 	# CF
+Net "cath<6>" LOC = L14 ; 	# CG
+#Net "seg<7>" LOC = M13 ; 	# DP
+Net "an<0>" LOC = N16 ; 	# AN0	(uiterst links cijfer)
+Net "an<1>" LOC = N15 ; 	# AN1
+Net "an<2>" LOC = P18 ; 	# AN2
+Net "an<3>" LOC = P17 ; 	# AN3	(uiterst rechts cijfer)

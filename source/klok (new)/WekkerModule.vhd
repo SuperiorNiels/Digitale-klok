@@ -87,8 +87,6 @@ architecture Behavioral of WekkerModule is
 	signal en2  : std_logic := '0';
 	signal en3  : std_logic := '0';
 	signal enT  : std_logic := '0';
-	signal tc1Cnten2 : std_logic := '0';
-	signal tc2Cnten3 : std_logic := '0';
 	signal weergave : std_logic := '0';
 	signal ostate_sign : std_logic_vector(3 downto 0) := x"0";
 	signal skip_mode  : std_logic := '0'; -- zorgt ervoor dat de 'tel' state overgeslagen wordt'
@@ -123,9 +121,7 @@ begin
 				updwn2 => ud2,
 				cnten3 => en3,
 				updwn3 => ud3,
-				count => count,
-				tc1 => tc1Cnten2,
-				tc2 => tc2Cnten3);		
+				count => count);		
 ostate <= ostate_sign;
 end Behavioral;
 
