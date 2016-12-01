@@ -281,7 +281,7 @@ begin
 				ostate => wekker_state);
 				
 	TF : toon_functie
-	Port map(sel => btn4,
+	Port map(sel => out4_sign,
 				sysclk => sysclk,
 				dis => dis_sign,
 				idig1 => tijd_count,

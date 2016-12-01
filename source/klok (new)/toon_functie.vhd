@@ -60,13 +60,13 @@ begin
 	
 	NXT_STATE: process(present_state,sel)
 	begin
-	if dis = '0' then 
+	if dis = '1' then next_state <= present_state;
+	else
 		case present_state is
 			when tijd => if sel = '1' then next_state <= datum; else next_state <= tijd; end if;
 			when datum => if sel = '1' then next_state <= wekker; else next_state <= datum; end if;
 			when wekker => if sel = '1' then next_state <= tijd; else next_state <= wekker; end if;
-		end case;
-	else next_state <= present_state;
+		end case; 
 	end if;
 	end process;
 	OUTPUTS: process(sysclk)
