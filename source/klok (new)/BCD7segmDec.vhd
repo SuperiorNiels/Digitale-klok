@@ -50,7 +50,7 @@ begin
 		when "0111" => segm <= "1011000"; -- 7
 		when "1000" => segm <= "0000000"; -- 8
 		when "1001" => segm <= "0010000"; -- 9
-		when "1110" => segm <= "0010000"; -- -
+		when "1110" => segm <= "0111111"; -- -
 		when others => segm <= "1111111";
 	end case;
 end process;

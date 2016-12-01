@@ -90,8 +90,8 @@ begin
 							odig2 <= idig(7 downto 4);
 							odig1 <= idig(3 downto 0);
 						else
-							odig4 <= "1111";
-							odig3 <= "1111";
+							odig4 <= "1110";
+							odig3 <= "1110";
 							odig2 <= "1111";
 							odig1 <= "1111";
 						end if;
@@ -102,8 +102,8 @@ begin
 							odig2 <= idig(23 downto 20);
 							odig1 <= idig(19 downto 16);
 						else
-							odig4 <= "1111";
-							odig3 <= "1111";
+							odig4 <= "1110";
+							odig3 <= "1110";
 							odig2 <= "1111";
 							odig1 <= "1111";
 						end if;

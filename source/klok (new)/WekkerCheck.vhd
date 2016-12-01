@@ -40,7 +40,7 @@ entity WekkerCheck is
 end WekkerCheck;
 
 architecture Behavioral of WekkerCheck is
-type state is (wekker_on,wekker_off,ringing);
+type state is (wekker_off,wekker_on,ringing);
 signal present_state : state;
 signal next_state : state;
 begin
@@ -54,13 +54,13 @@ STATE_REG: process(sysclk)
 NXT_STATE : process(present_state,btns,digTijd,digWekker)
 	begin
 		case present_state is
-			when wekker_on => if btns = '1' then next_state <= wekker_off; 
-									elsif digTijd = digWekker then next_state <= ringing; 
-									else next_state <= wekker_on; 
-									end if;
 			when wekker_off => if btns = '1' then next_state <= wekker_on; 
 									 else next_state <= wekker_off; 
 									 end if;
+			when wekker_on => if btns = '1' then next_state <= wekker_off; 
+									elsif digTijd = digWekker then next_state <= ringing; 
+									else next_state <= wekker_on; 
+									end if;			
 			when ringing => if btns = '1' then next_state <= wekker_on;
 								 else next_state <= ringing;
 								 end if;
@@ -71,8 +71,8 @@ OUTPUTS : process(sysclk)
 	begin
 		if rising_edge(sysclk) then
 			case present_state is
-				when wekker_on => led6 <= '1'; led7 <= '0'; dis <= '0';
 				when wekker_off => led6 <= '0'; led7 <= '0'; dis <= '0';
+				when wekker_on => led6 <= '1'; led7 <= '0'; dis <= '0';
 				when ringing => led6 <= '1'; led7 <= '1'; dis <= '1';
 			end case;
 		end if;
