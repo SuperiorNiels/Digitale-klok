@@ -29,7 +29,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Functie_Select is
+entity Functie_Sel is
     Port ( in1 : in  STD_LOGIC;
            in2 : in  STD_LOGIC;
            in3 : in  STD_LOGIC;
@@ -49,9 +49,9 @@ entity Functie_Select is
            chrono_4 : out  STD_LOGIC;
            chrono_5 : out  STD_LOGIC;
            os2 : out  STD_LOGIC);
-end Functie_Select;
+end Functie_Sel;
 
-architecture Behavioral of Functie_Select is
+architecture Behavioral of Functie_Sel is
 begin
 	OUTPUTS: process(sysclk)
 	begin
