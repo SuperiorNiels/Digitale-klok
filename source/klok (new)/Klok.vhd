@@ -41,6 +41,7 @@ entity klok is
 			  led0 : out STD_LOGIC;
 			  led1 : out STD_LOGIC;
 			  led2 : out STD_LOGIC;
+			  led5 : out STD_LOGIC;
 			  led6 : out STD_LOGIC;
 			  led7 : out STD_LOGIC);
 end klok;
@@ -81,7 +82,8 @@ architecture Behavioral of klok is
 				  datum_1 : out  STD_LOGIC;
 				  datum_2 : out  STD_LOGIC;
 				  datum_3 : out  STD_LOGIC;
-				  dis     : in   STD_LOGIC;
+				  dis_1    : in   STD_LOGIC;
+				  dis_2    : in   STD_LOGIC;
 				  wekker_1 : out  STD_LOGIC;
 				  wekker_2 : out  STD_LOGIC;
 				  wekker_3 : out  STD_LOGIC);
@@ -151,9 +153,13 @@ architecture Behavioral of klok is
 	component WekkerCheck
 			 Port ( sysclk : in STD_LOGIC;
 				  btns : in  STD_LOGIC;
+				  btnr : in STD_LOGIC;
+				  pulse4 : in STD_LOGIC;
 				  digTijd : in  STD_LOGIC_VECTOR (23 downto 0);
 				  digWekker : in  STD_LOGIC_VECTOR (23 downto 0);
-				  dis  : out STD_LOGIC;
+				  dis_1  : out STD_LOGIC;
+				  dis_2  : out STD_LOGIC;
+				  led5 : out STD_LOGIC;
 				  led6 : out  STD_LOGIC;
 				  led7 : out  STD_LOGIC);
 	end component;
@@ -190,7 +196,8 @@ architecture Behavioral of klok is
 	signal wekker_mode : std_logic := '0';
 	signal wekker_incr : std_logic := '0';
 	signal wekker_decr : std_logic := '0';
-	signal dis_sign    : std_logic := '0';
+	signal dis1_sign    : std_logic := '0';
+	signal dis2_sign    : std_logic := '0';
 	
 	signal tijd_count : std_logic_vector(23 downto 0) := x"000000";
 	signal tijd_state : std_logic_vector(3 downto 0) := "0000";
@@ -246,7 +253,8 @@ begin
 				datum_1 => datum_mode,
 				datum_2 => datum_incr,
 				datum_3 => datum_decr,
-				dis => dis_sign,
+				dis_1 => dis1_sign,
+				dis_2 => dis2_sign,
 				wekker_1 => wekker_mode,
 				wekker_2 => wekker_incr,
 				wekker_3 => wekker_decr);
@@ -284,7 +292,7 @@ begin
 	TF : toon_functie
 	Port map(sel => out4_sign,
 				sysclk => sysclk,
-				dis => dis_sign,
+				dis => dis1_sign,
 				idig1 => tijd_count,
 				idig2 => datum_count,
 				idig3 => wekker_count,
@@ -310,9 +318,13 @@ begin
 	WC : WekkerCheck
 	Port map(sysclk => sysclk,
 				btns => outs_sign,
+				btnr => out1_sign,
+				pulse4 => pulse4_sign,
 				digTijd => tijd_count,
 				digWekker => wekker_count,
-				dis => dis_sign,
+				dis_1 => dis1_sign,
+				dis_2 => dis2_sign,
+				led5 => led5,
 				led6 => led6,
 				led7 => led7);
 				

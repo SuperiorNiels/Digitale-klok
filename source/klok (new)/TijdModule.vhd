@@ -85,10 +85,12 @@ architecture Behavioral of TijdModule is
 	signal tc1Cnten2 : std_logic := '0';
 	signal tc2Cnten3 : std_logic := '0';
 	signal weergave : std_logic := '0';
+	signal tc_sign : std_logic := '0';
 	
 	signal temp1: STD_LOGIC := '0';
 	signal temp2: STD_LOGIC := '0';
 	signal temp3: STD_LOGIC := '0';
+	signal tc_out: STD_LOGIC := '0';
 	
 begin
 	waardes : process(cnten,weergave,en1,en2,en3,tc1Cnten2,tc2Cnten3)
@@ -96,6 +98,7 @@ begin
 		temp1 <= (cnten and weergave) or en1;-- Cnten voor SS
 		temp2 <= en2 or (tc1Cnten2 and weergave);--Cnten voor MM
 		temp3 <= en3 or (tc2Cnten3 and weergave);--Cnten voor UU
+		tc_out <= tc_sign and weergave; -- TC voor datummodule enkel wanneer tijd weergave
 	end process;
 	
 	FSM : ModeFSM
@@ -131,6 +134,7 @@ begin
 				count => count,
 				tc1 => tc1Cnten2,
 				tc2 => tc2Cnten3,
-				tc3 => tc);			
+				tc3 => tc_sign);	
+tc <= tc_out;				
 end Behavioral;
 

@@ -32,6 +32,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity deler is
 	Generic (div : integer := 10);
     Port ( sysclk : in  STD_LOGIC;
+			  reset : in STD_LOGIC;
            en : in  STD_LOGIC;
            pulse : out  STD_LOGIC);
 end deler;
@@ -43,7 +44,8 @@ begin
 	deler : process (sysclk)
 		begin
 			if rising_edge(sysclk) then
-			if en = '1' then
+			if reset = '1' then cnt_int <= 0;
+			elsif en = '1' then
 				if cnt_int = max then cnt_int <= 0;
 				else cnt_int <= cnt_int + 1;
 				end if;

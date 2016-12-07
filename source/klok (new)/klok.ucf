@@ -10,6 +10,7 @@ Net "btn1" LOC = D9 ;	# BTNr
 Net "led0" LOC = U16 ;	# LD0	(uiterst rechtse led)
 Net "led1" LOC = V16 ;	# LD1
 Net "led2" LOC = U15 ;	# LD2
+Net "led5" LOC = N11 ;  # LD5
 Net "led6" LOC = R11 ;	# LD6
 Net "led7" LOC = T11 ;	# LD7	(uiterst linkse led)
 ## 7 segment display

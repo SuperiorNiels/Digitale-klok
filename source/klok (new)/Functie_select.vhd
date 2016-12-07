@@ -41,7 +41,8 @@ entity Functie_select is
            datum_1 : out  STD_LOGIC;
            datum_2 : out  STD_LOGIC;
            datum_3 : out  STD_LOGIC;
-			  dis 	 : in   STD_LOGIC;
+			  dis_1	 : in   STD_LOGIC;
+			  dis_2   : in STD_LOGIC;
 			  wekker_1 : out  STD_LOGIC;
            wekker_2 : out  STD_LOGIC;
            wekker_3 : out  STD_LOGIC);
@@ -61,7 +62,7 @@ begin
 	
 	NXT_STATE: process(present_state,in4)
 	begin
-	if dis = '1' then next_state <= present_state;
+	if dis_1 = '1' then next_state <= present_state;
 	else
 		case present_state is
 			when tijd => if in4 = '1' then next_state <= datum; else next_state <= tijd; end if;
@@ -76,10 +77,12 @@ begin
 		if rising_edge(sysclk) then
 			case present_state is
 				when tijd =>
-					if dis = '0' then
-						tijd_1 <= in1;
-						tijd_2 <= in2;
-						tijd_3 <= in3;
+					if dis_1 = '0' then
+						if dis_2 = '0' then 
+							tijd_1 <= in1;
+							tijd_2 <= in2;
+							tijd_3 <= in3;
+						end if;
 						datum_1 <= '0';
 						datum_2 <= '0';
 						datum_3 <= '0';
@@ -98,10 +101,12 @@ begin
 						wekker_3 <= '0';
 					end if;
 				when datum =>
-					if dis = '0' then
-						datum_1 <= in1;
-						datum_2 <= in2;
-						datum_3 <= in3;
+					if dis_1 = '0' then
+						if dis_2 = '0' then 
+							datum_1 <= in1;
+							datum_2 <= in2;
+							datum_3 <= in3;
+						end if;
 						wekker_1 <= '0';
 						wekker_2 <= '0';
 						wekker_3 <= '0';
@@ -120,10 +125,12 @@ begin
 						tijd_3 <= '0';
 					end if;
 				when wekker =>
-					if dis = '0' then
-						wekker_1 <= in1;
-						wekker_2 <= in2;
-						wekker_3 <= in3;
+					if dis_1 = '0' then
+						if dis_2 = '0' then
+							wekker_1 <= in1;
+							wekker_2 <= in2;
+							wekker_3 <= in3;
+						end if;
 						datum_1 <= '0';
 						datum_2 <= '0';
 						datum_3 <= '0';
